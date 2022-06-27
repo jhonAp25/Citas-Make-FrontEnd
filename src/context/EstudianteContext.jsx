@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 let EstudianteContext = React.createContext();
 let {Provider, Consumer} = EstudianteContext;
 
-const url = 'http://localhost:8080/'
+const url = 'https://citas-make.herokuapp.com/'
 
 const EstudianteProvider = ({children}) => {
     
@@ -85,7 +85,7 @@ const EstudianteProvider = ({children}) => {
           console.log(data)
         }).catch((error)=>{
         
-          console.log(error.response);
+          console.log(error);
           
         })
       }

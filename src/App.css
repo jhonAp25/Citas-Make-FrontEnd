@@ -32,10 +32,10 @@ text-transform: uppercase;
 color: #011826;
 }
 .text_normal{
-  color: #3F618C;
+  color: #365B73;
 }
 .text_titulo02{
-  color: #F20544;
+  color: #365B73;
 }
 .text_subtitulo{
   color: #011826;
@@ -51,22 +51,22 @@ color: #011826;
 
 
 .btn_primary{
-  background-color: #13678A;
+  background-color: #FF3E60;
   color: #fff;
 }
 .btn_primary:hover{
-  background-color: #13668abd;
+  background-color: #d43552;
 }
 
 .btn_secondary{
-  background-color: #8C2656;
+  background-color: #365B73;
   color: #fff;
 }
 .btn_secondary:hover{
-  background-color: #5c1b39;
+  background-color: #365B73;
 }
 .btn_darck{
-  border:2px solid #012340;
+  border:2px solid #223847;
   color: #012340;
 }
 .btn_darck:hover{
