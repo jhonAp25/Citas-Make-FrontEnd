@@ -61,9 +61,10 @@ color: #011826;
 .btn_secondary{
   background-color: #365B73;
   color: #fff;
+  cursor: pointer;
 }
 .btn_secondary:hover{
-  background-color: #365B73;
+  background-color: #294457;
 }
 .btn_darck{
   border:2px solid #223847;

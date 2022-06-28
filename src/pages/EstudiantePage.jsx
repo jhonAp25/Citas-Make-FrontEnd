@@ -4,6 +4,7 @@ import { HiPlusCircle } from "react-icons/hi";
 import {FiSearch} from "react-icons/fi";
 import { EstudianteContext } from '../context/EstudianteContext';
 import CardEstudiante from '../components/CardEstudiante';
+import FormularioEstudiante from '../components/FormularioEstudiante';
 
 
 const EstudiantePage = () => {
@@ -42,11 +43,9 @@ const EstudiantePage = () => {
             
         <h2 className='w-4/5 font-bold text-3xl tracking-widest text_titulo'>estudiante</h2>
         
-       {/**************
-        * <Formularioestudiante hidden={hidden} openModal={openModal} postestudiante={postestudiante}  />
-        <Updateestudiante hiddenUpdat={hiddenUpdat} dataestudiante={dataestudiante} openModalUpdat={openModalUpdat}/>
-        * 
-        * */} 
+       <FormularioEstudiante hidden={hidden} openModal={openModal} postEstudiante={postEstudiante}  />
+       {/** <Updateestudiante hiddenUpdat={hiddenUpdat} dataestudiante={dataestudiante} openModalUpdat={openModalUpdat}/> */}
+     
 
        
 
@@ -58,7 +57,7 @@ const EstudiantePage = () => {
         </div>
 
                         
-         <div className='w-full  p-2 grid grid-cols-auto gap-4 overflow-y-auto' style={{maxHeight: '36rem'}} >
+         <div className='w-full  p-2 grid grid-cols-auto gap-4 overflow-y-auto' style={{maxHeight: '34rem'}} >
 
             {estudiante.map(t=>(
                 <CardEstudiante data={t} openModalUpdat={openModalUpdat} />
