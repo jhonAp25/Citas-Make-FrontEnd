@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useContext } from 'react'
-import { ClienteContext } from '../context/ClienteContext'
 import { EstudianteContext } from '../context/EstudianteContext'
 import { DisciplinaContext } from '../context/DisciplinaContext'
 import { PlanPagoContext } from '../context/PlanPagoContext'
@@ -9,7 +8,7 @@ import { MdOutlinePersonalInjury } from "react-icons/md";
 import { FaHandHoldingMedical , FaLaptopMedical} from "react-icons/fa";
 const CardDashboard = () => {
     const {disciplina,getDisciplina} =useContext(DisciplinaContext)
-    const {cliente,getCliente} =useContext(ClienteContext)
+
     const {estudiante,getEstudiante} =useContext(EstudianteContext)
     const {plan,getPlan} =useContext(PlanPagoContext)
 
@@ -18,7 +17,6 @@ const CardDashboard = () => {
 
     useEffect(() => {
       getDisciplina()
-      getCliente()
       getEstudiante()
       getPlan()
       
@@ -51,7 +49,7 @@ const CardDashboard = () => {
 
                <div className='text_card col-span-5 flex justify-around items-center pl-5' >
                    <span className=' text-md tracking-widest font-bold' >Estudiantes</span>
-                   <span className='font-bold text-3xl'>{cliente.length}</span>
+                   <span className='font-bold text-3xl'>88</span>
                </div>
             </div>
 

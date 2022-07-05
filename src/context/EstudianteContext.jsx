@@ -2,6 +2,7 @@ import React,{useEffect , useState} from 'react'
 
 import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast";
+import {Security} from "./Security"
 
 
 let EstudianteContext = React.createContext();
@@ -14,23 +15,24 @@ const EstudianteProvider = ({children}) => {
     /********* STATES ************ */
     const [ estudiante , setEstudiante] = useState([])
 
+    /********* SECURITY ************ */
+
+  
 
     
 /************************* P O S T *******************************/ 
 
     const postEstudiante= async (dat, imgUrl)=>{   
-        await axios.post(url +'estudiante', {
-          altura: dat.altura,
+        await Security.post(url +'estudiante', {
+        
           apellido: dat.apellido,
-          descripcion: dat.descripcion,
           dni: dat.dni,
-          fechaNac: dat.fechaNac,
+          fecnac: dat.fecnac,
           foto: imgUrl,
-          genero: dat.genero,
-          nombre: dat.nombre,
-          peso: dat.peso,
-          telefono: dat.telefono,
-          disciplinas:{id : dat.disciplina} 
+          telefono: dat.celular,
+          nombre: dat.nombre, 
+          correo: dat.correo,
+          carrera:{id : dat.carrera.split("-")[1]} 
         }).then((response)=>{
         
           toast.success('Estudiante nuevo Creado! ✔'); 
@@ -40,7 +42,7 @@ const EstudianteProvider = ({children}) => {
          
         }).catch((error)=>{
           
-        
+          toast.error(error); 
           console.log(error);
           
         })
@@ -49,7 +51,7 @@ const EstudianteProvider = ({children}) => {
 
       
       const putEstudiante=  (dat, dataEstudiante)=>{   
-         axios.put(url +'estudiante/update', {
+        Security.put(url +'estudiante/update', {
              altura: dat.altura,
              descripcion: dat.descripcion,
              disciplinas: dataEstudiante.disciplinas.id,
@@ -80,7 +82,7 @@ const EstudianteProvider = ({children}) => {
     /********************** G E T -- T R A I N E R   ********************************* */
 
       const getEstudiante= async ()=>{   
-        await axios.get(url +'estudiante').then(({data})=>{
+        await Security.get(url +'estudiante').then(({data})=>{
           setEstudiante(data);
           console.log(data)
         }).catch((error)=>{
@@ -91,7 +93,7 @@ const EstudianteProvider = ({children}) => {
       }
 
       const getEstudianteBusqueda= async (dato)=>{   
-        await axios.get(url +'estudiante/buscar?dato='+ dato).then(({data})=>{
+        await Security.get(url +'estudiante/filtroNombre?datos='+ dato).then(({data})=>{
           setEstudiante(data);
           console.log(data);
         }).catch((error)=>{

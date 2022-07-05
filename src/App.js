@@ -10,47 +10,59 @@ import { ClaseProvider } from "./context/ClaseContext";
 import { SalonProvider } from "./context/SalonContext";
 import Login from "./components/Login";
 import { LoginProvider } from "./context/LoginContext";
-import { ClienteProvider } from "./context/ClienteContext";
 import { PlanPagoProvider } from "./context/PlanPagoContext";
 import { EstudianteProvider } from "./context/EstudianteContext";
 import EstudiantePage from "./pages/EstudiantePage";
+import { CarreraProvider } from "./context/CarreraContext";
+import PrivateRoute from "./util/PrivateRoute";
+import DefaultRoute from "./util/DefaultRoute";
+import DefaultPage from "./pages/DefaultPage";
+import CitaAdminPage from "./pages/admin/CitaAdminPage";
+import { EspecialidadProvider } from "./context/EspecialidadContext";
+import { CitaProvider } from "./context/CitaContext";
+import { ReservaCitaProvider } from "./context/ReservaCitas";
 
 
 
-
+/*
 const RouteAdmin =({ component : Component , ...rest})=>{
   const token = localStorage.getItem('rol')
 return <Route {...rest} > {token ==='ADMIN'  ?  <Component/> : <Redirect to="/" /> }  </Route> 
 }
 
-
+*/
 
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router  >
       <LoginProvider>
-<ClaseProvider>
-<DisciplinaProvider>
-<EstudianteProvider>
-  <ClienteProvider>
-<SalonProvider>
-  <PlanPagoProvider>
+      <EspecialidadProvider>
+      <DisciplinaProvider>
+      <EstudianteProvider>
+      <CitaProvider>
+      <SalonProvider>
+      <PlanPagoProvider>
+      <CarreraProvider>
+      <ReservaCitaProvider>
      
       <Switch>
-      <Route exact path="/" component={Login} />
 
-      <div className='flex w-full'> 
-         <Navbar/> 
-         
-         <Notificacion/>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/noFound" component={DefaultPage} />
+       
+        <div className='flex w-full'> 
+            <Navbar/> 
+            
+            <Notificacion/>
          <div style={{width: '80%'}} >
-            <RouteAdmin exact path="/inicio" component={DashboardAdmin} />
-
-            <RouteAdmin exact path="/estudiante" component={EstudiantePage} />
+            <PrivateRoute exact path="/inicio" component={DashboardAdmin} />
+            <PrivateRoute exact path="/estudiante" component={EstudiantePage} />
+            <PrivateRoute exact path="/cita" component={CitaAdminPage} />
             
           {/***
+           * 
            *  <RouteAdmin exact path="/cliente" component={ClientePage}  />
             <RouteAdmin exact path="/clase" component={ClasesPage} />
             <RouteAdmin exact path="/plan_pago" component={PlanPago}  />
@@ -65,13 +77,15 @@ function App() {
       </div>
 
       </Switch>
+      </ReservaCitaProvider>
+      </CarreraProvider>
 
       </PlanPagoProvider>
       </SalonProvider>
-      </ClienteProvider>
+      </CitaProvider>
       </EstudianteProvider>
       </DisciplinaProvider>
-      </ClaseProvider>
+      </EspecialidadProvider>
       </LoginProvider>
     </Router>
 

@@ -40,7 +40,13 @@ color: #011826;
 .text_subtitulo{
   color: #011826;
 }
-
+.text_secondary{
+  color: #349EB5;
+}
+.bg_primary{
+  background-color: #365B73;
+  color: #F2F2F2;
+}
 
 
 
@@ -77,19 +83,23 @@ color: #011826;
 
 
 .nav_active{
-  background-color: #9aeba34d;
-  color: #13678A;
+  background-color: #15c1e050;
+  color: #349EB5;
+}
+.nav_item{
+ 
+  color: #349EB5;
 }
 .nav_item:hover{
-  background-color: #9aeba34d;
-  color: #13678A;
+  background-color: #15c1e050;
+  color: #349EB5;
 }
 
 .nav_active::before{
   content: "";
   height: 100%;
   width: 10px;
-  background-color:#13678A;
+  background-color:#349EB5;
   border-radius: 0 10px 10px 0;
 }
 /****************Card Cliente*******************/
@@ -179,10 +189,10 @@ color: #011826;
 }
 .inputText{
   outline: none;
-  border: 1px solid #011826;
+  border: 1px solid #365B73;
 }
 .inputText:focus{
-  outline: 2px solid #01182659;
+  outline: 2px solid #365b7383;
 }
 .inputText::placeholder{
   font-weight: 300;
@@ -230,4 +240,33 @@ color: #011826;
   color: white;
 }
 
+/********BOX***********/
 
+.border_box{
+  border: dashed 2px #365b73 ;
+  background-color: #365b7336;
+}
+
+
+/***********************/
+.form-date__input.form-date__input::-webkit-datetime-edit{
+  display: none;
+
+}
+.form-date__input{
+  cursor: pointer;
+  padding: 1%;
+  border-radius: 50%;
+  background: #365b7349;
+ 
+  }
+  .form-date__input:hover{
+    background: #365b7385;
+   
+    }
+.form-date__input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+   display: block;
+   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='59' height='59' viewBox='0 0 59 59' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M44.25 9.83337H14.75C9.31916 9.83337 4.91663 14.2359 4.91663 19.6667V44.25C4.91663 49.6808 9.31916 54.0834 14.75 54.0834H44.25C49.6808 54.0834 54.0833 49.6808 54.0833 44.25V19.6667C54.0833 14.2359 49.6808 9.83337 44.25 9.83337Z' stroke='%23012340' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19.6666 4.91669V14.75M39.3333 4.91669V14.75M4.91663 24.5834H54.0833' stroke='%23012340' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+}

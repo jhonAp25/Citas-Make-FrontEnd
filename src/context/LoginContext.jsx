@@ -1,59 +1,112 @@
-import React,{useContext , useState} from 'react'
+import React,{useContext , useEffect, useState} from 'react'
 
 import axios from 'axios';
 import toast from "react-hot-toast";
+import jwt_decode from "jwt-decode";
+import { useHistory } from 'react-router-dom';
 
 
 
 let LoginContext = React.createContext();
 let {Provider, Consumer} = LoginContext;
 
-const url = 'https://idat-gym.herokuapp.com'
+const url = 'https://citas-make.herokuapp.com/auth/'
 
 const LoginProvider = ({children}) => {
     
     //********* */ STATES ************
-    const [ usuario , setUsuario] = useState([])
-    const [error , setError]=useState("")
 
+    const [error , setError]=useState("")
+    let [authToken , setAuthToken] =useState(()=>localStorage.getItem('token') )
+    let [user , setUser] =useState(()=>localStorage.getItem('token') ?  jwt_decode(localStorage.getItem('token')) : null  )
+    const [nameUser, setNameUser] = useState("")
+
+    const history = useHistory()
     
     //************* */ URL ************
   
 
 
-    const signIn = async(user)=>{ await axios.post(url +'/usuario/login' , user)
-            .then((response)=>{ 
-               
-                setUsuario(response.data) 
-                localStorage.setItem("nombreUsuario" , user.usuario)
-                console.log(user.usuario);
-                if (response.data.Usuario.rol.tipoRol === "ADMIN"){
-                    localStorage.setItem("usuario",response.data.Usuario.administrador.nombre);
-                    localStorage.setItem("rol",response.data.Usuario.rol.tipoRol);
-                    localStorage.setItem('img' , '')
-                    window.location = '/inicio'
-                }else {
-                    
-                    window.location = '/'
-                }
+    const signIn= async (data)=>{   
+        await axios.post(url +'log-in', {
+          password: data.contrasena,
+          username: data.usuario
+      }).then(({data})=>{
+           console.log(data)
+           setAuthToken(data.token)
+           setUser(jwt_decode(data.token))
+           localStorage.setItem("token" , data.token)
+           history.push('/inicio')
+        
 
-                console.log(response.data)
-               
-                })
-            .catch((error) => { 
-                console.log(error.response.data);
-
-                toast.error('Intente de nuevo ❌'); 
-              
-            })}
-
-   // const nuevoUsu = async()=>{ await axios.post(url +'/nuevo').then((response)=>{ setUsuario(response.data); }) }
+        }).catch((error)=>{
+        
+          console.log(error);
+          toast.error("Intente de nuevo"); 
+          
+        })
+      }
 
 
+      const getUser= async ()=>{   
+        await axios.get(url +'find-user/'+ user?.sub)
+        .then(({data})=>{
+           console.log(data)
+           setNameUser(data.names)    
+
+        }).catch((error)=>{
+        
+          console.log(error);
+          toast.error("No existe User"); 
+          
+        })
+      }
+
+
+
+      const LogoutUser=()=>{
+        setAuthToken(null)
+        setUser(null)
+        localStorage.removeItem("token" )
+        history.push('/login')
+      }
+
+    const RefreshToken=async()=>{
+        console.log("Resfreshing");
+        await axios.post(url +'refresh', {
+            token: localStorage.getItem('token')
+          
+        }).then(({data})=>{
+             console.log(data)
+             setAuthToken(data.token)
+             setUser(jwt_decode(data.token))
+             localStorage.setItem("token" , data.token)
+            
+          
+  
+          }).catch((error)=>{
+        
+            console.log(error);
+           LogoutUser()
+            
+          })
+    }
+
+
+   useEffect(()=>{
+
+    let interval = setInterval(()=>{
+        if(authToken){
+            RefreshToken()
+        }
+    },3000)
+    return ()=> clearInterval(interval)
+
+}, authToken)
 
 
     return(
-        <Provider value={{signIn  ,error ,setError }}>
+        <Provider value={{signIn  ,error ,setError , user , getUser, nameUser}}>
         {children}
     </Provider>
     )
