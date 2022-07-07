@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
+import { useEffect } from 'react'
 import { useRef } from 'react'
 import { CitaContext } from '../context/CitaContext'
 import BoxCita from './BoxCita'
@@ -11,25 +12,36 @@ const CardsCita = ({especialidad}) => {
     const options = {weekday: "long", year: "numeric", month: "long", day: "numeric"}
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
+   
   /*****************STATES******************* */
     const [localDate, setLocalDate]=useState(hoy.toLocaleDateString("es-ES", options))
-    const [date, setDate ]=useState()
+    const [date, setDate ]=useState(hoy.toISOString().split("T")[0])
     const [especialista, setEspecialista]= useState()
-
 
     const changeDate=(e)=>{
        
-        const date = new Date(e.target.value+'T00:00:00')
-        
-        getBusquedaCita(e.target.value, especialista )
+        const date = new Date(e.target.value+'T00:00:00')   
        
         setLocalDate(date.toLocaleDateString("es-ES", options) )
         setDate(e.target.value)
+        localStorage.setItem("fecha" , e.target.value )
+
+        getBusquedaCita(e.target.value, especialista )
+      
     }
     const changeEspecialista=(e)=>{
+        //console.log(hoy.toISOString().split("T")[0])
+
         setEspecialista(e.target.value)
-        getBusquedaCita(date, e.target.value )
+        localStorage.setItem("espc" , e.target.value)
+        getBusquedaCita(date , e.target.value)
     }
+
+    useEffect(() => {
+        
+        localStorage.setItem("fecha" , hoy.toISOString().split("T")[0] )
+    }, [])
+    
 
 
   return (
@@ -52,7 +64,7 @@ const CardsCita = ({especialidad}) => {
 
         <div className='pt-4    '>
             {
-                cita?.cupos?.map(c=>(
+                cita.map(c=>(
                     <BoxCita data={c} /> 
                 ))
             }

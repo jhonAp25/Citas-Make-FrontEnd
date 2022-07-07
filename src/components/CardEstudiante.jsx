@@ -18,7 +18,7 @@ const CardEstudiante = ({ data }) => {
                     <div className='flex flex-col flex-initial  justify-center items-center mb-4 ml-4' style={{width: "20%"}} >
 
                         {/** <img src="https://i.imgur.com/pMTKt20.jpg" alt=""  className='rounded-full' style={{width: '120px' , height : '120px'}} />* */}
-                        {data?.foto === null
+                        {data?.foto === ''
                             ? <div className='rounded-full flex justify-center items-center ' style={{ width: '90px', height: '90px', background: '#011826' }} >
                                 <span className='text-white font-semibold text-3xl uppercase'>  {data?.apellido?.charAt(0)}{data?.nombre?.charAt(0)} </span>
                             </div>

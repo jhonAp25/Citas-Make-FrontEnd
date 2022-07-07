@@ -11,6 +11,9 @@ const CitaAdminPage = () => {
   useEffect(() => {
    
     getEspecialidad()
+    
+
+
   }, []);
 
   return (
@@ -22,7 +25,7 @@ const CitaAdminPage = () => {
                
             <CardsCita especialidad={especialidad}  />
 
-            <FormularioCita/>
+            <FormularioCita  />
 
 
 

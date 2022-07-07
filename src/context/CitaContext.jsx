@@ -14,29 +14,24 @@ const CitaProvider = ({children}) => {
     
     /********* STATES ************ */
     const [ cita , setCita] = useState([])
-    const [ idCita , setIdCita]=useState(0)
+    const [citaDisponible, setCitaDisponible] = useState([])
+
+    let fecha = localStorage.getItem("fecha")
+    let idEspcialidad = localStorage.getItem("espc")
 
 
     
 /************************* P O S T *******************************/ 
 
-    const postCita = async (dat)=>{   
-        await Security.post(url +'cita', {
-            nombre: dat.nombre,
-            apellido: dat.apellido,
-            celular: dat.celular,
-            correo: dat.correo,
-            sexo: dat.sexo ,
-            dni : dat.dni,
-            foto: null
-          
-          
+    const postReservaCita = async (data)=>{   
+        await Security.post(url +'reservaCita', {
+          cita: {id: data.cita },
+          descripcion: data.descripcion,
+          estudiante:  {id: data.estudiante }  
         }).then((response)=>{
-        
-          getCita()
-          alert(response.data.id)
-          setIdCita(response.data.id)
-          toast.success('Cita nuevo '+ response.data.nombre+' agregado ✔'); 
+
+          getBusquedaCita(fecha , idEspcialidad)
+          toast.success('Cita reservada ✔'); 
 
         }).catch((error)=> console.log(error))
       }
@@ -47,12 +42,17 @@ const CitaProvider = ({children}) => {
     /********************** G E T -- C I T A  ********************************* */
 
       const getCita= async ()=>{   
-        await Security.get(url +'cita').then(({data})=>{
-            setCita(data);
+        await Security.get(url +'cita').then((data)=>{
+            setCita(data.data);
+
+           
+         
+
+
             console.log(data);
 
         }).catch((error)=>{
-        
+          setCita([])
           console.log(error.response);
           
         })
@@ -60,11 +60,37 @@ const CitaProvider = ({children}) => {
 
 
       const getBusquedaCita= async (fecha, id)=>{   
-        await Security.get(url +'cita/'+ fecha +'/'+id).then(({data})=>{
-          setCita(data);
+        await Security.get(url +'cita/'+ fecha +'/'+id).then((data)=>{
+          
+          if(data.data.length === 0 ){
+            setCita([])
+            toast.error("No hay citas")
+          }else{
+             setCita(data.data)
+            
+          }
          
         }).catch((error)=>{
-          toast.error('No se encontro ningun cita')
+          toast.error('Seleccione el servicio')
+          console.log(error.response);
+          
+        })
+      }
+
+      const getCitaDisponible= async (fecha , id)=>{   
+        await Security.get(url +'cita/cita-disponible/'+ fecha +'/'+id).then((data)=>{
+          
+          if(data.data.length === 0 ){
+            setCitaDisponible([])  
+            
+          }else{
+            setCitaDisponible(data.data)
+            
+          }
+
+         
+        }).catch((error)=>{
+         
           console.log(error.response);
           
         })
@@ -83,7 +109,7 @@ const CitaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{getCita, cita,idCita, postCita, getBusquedaCita}}>
+        <Provider value={{getCita, cita, postReservaCita, getBusquedaCita,citaDisponible , getCitaDisponible}}>
         {children}
     </Provider>
     )

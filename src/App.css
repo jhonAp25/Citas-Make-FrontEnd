@@ -43,6 +43,9 @@ color: #011826;
 .text_secondary{
   color: #349EB5;
 }
+.text_danger{
+  color: #f20544;
+}
 .bg_primary{
   background-color: #365B73;
   color: #F2F2F2;
@@ -79,6 +82,14 @@ color: #011826;
 .btn_darck:hover{
   background-color: #012340; 
   color: white ;
+}
+.btn_detalle{
+  color: #e63959;
+  cursor: pointer;
+}
+
+.btn_detalle:hover{
+  color: #c02c47;
 }
 
 
@@ -240,11 +251,16 @@ color: #011826;
   color: white;
 }
 
+
 /********BOX***********/
 
 .border_box{
   border: dashed 2px #365b73 ;
   background-color: #365b7336;
+}
+.border_box_danger{
+  border: dashed 2px #f20544;
+  background-color: #f205443f;
 }
 
 
@@ -270,3 +286,5 @@ color: #011826;
    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='59' height='59' viewBox='0 0 59 59' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M44.25 9.83337H14.75C9.31916 9.83337 4.91663 14.2359 4.91663 19.6667V44.25C4.91663 49.6808 9.31916 54.0834 14.75 54.0834H44.25C49.6808 54.0834 54.0833 49.6808 54.0833 44.25V19.6667C54.0833 14.2359 49.6808 9.83337 44.25 9.83337Z' stroke='%23012340' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19.6666 4.91669V14.75M39.3333 4.91669V14.75M4.91663 24.5834H54.0833' stroke='%23012340' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
 }
+
+

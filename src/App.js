@@ -21,6 +21,7 @@ import CitaAdminPage from "./pages/admin/CitaAdminPage";
 import { EspecialidadProvider } from "./context/EspecialidadContext";
 import { CitaProvider } from "./context/CitaContext";
 import { ReservaCitaProvider } from "./context/ReservaCitas";
+import CitaEstdiantePage from "./pages/admin/CitaEstdiantePage";
 
 
 
@@ -58,8 +59,10 @@ function App() {
             <Notificacion/>
          <div style={{width: '80%'}} >
             <PrivateRoute exact path="/inicio" component={DashboardAdmin} />
-            <PrivateRoute exact path="/estudiante" component={EstudiantePage} />
-            <PrivateRoute exact path="/cita" component={CitaAdminPage} />
+            <PrivateRoute exact path="/estudiante-admin" component={EstudiantePage} />
+            <PrivateRoute exact path="/cita-admin" component={CitaAdminPage} />
+            <PrivateRoute exact path="/cita-estudiante" component={CitaEstdiantePage} />
+           
             
           {/***
            * 

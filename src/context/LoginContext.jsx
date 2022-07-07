@@ -20,6 +20,7 @@ const LoginProvider = ({children}) => {
     let [authToken , setAuthToken] =useState(()=>localStorage.getItem('token') )
     let [user , setUser] =useState(()=>localStorage.getItem('token') ?  jwt_decode(localStorage.getItem('token')) : null  )
     const [nameUser, setNameUser] = useState("")
+    const [rol , setRol] =useState("")
 
     const history = useHistory()
     
@@ -52,7 +53,8 @@ const LoginProvider = ({children}) => {
         await axios.get(url +'find-user/'+ user?.sub)
         .then(({data})=>{
            console.log(data)
-           setNameUser(data.names)    
+           setNameUser(data.names) 
+           setRol(data.roles[0].name)   
 
         }).catch((error)=>{
         
@@ -99,14 +101,14 @@ const LoginProvider = ({children}) => {
         if(authToken){
             RefreshToken()
         }
-    },3000)
+    },30000)
     return ()=> clearInterval(interval)
 
 }, authToken)
 
 
     return(
-        <Provider value={{signIn  ,error ,setError , user , getUser, nameUser}}>
+        <Provider value={{signIn  ,error ,setError , user ,rol, getUser, nameUser}}>
         {children}
     </Provider>
     )

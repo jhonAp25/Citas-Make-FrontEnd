@@ -14,10 +14,9 @@ const EstudianteProvider = ({children}) => {
     
     /********* STATES ************ */
     const [ estudiante , setEstudiante] = useState([])
+    const [estudiantePendiente , setEstudiantePendiente] = useState([])
 
-    /********* SECURITY ************ */
 
-  
 
     
 /************************* P O S T *******************************/ 
@@ -92,6 +91,17 @@ const EstudianteProvider = ({children}) => {
         })
       }
 
+      const getEstudiantePendiente= async ()=>{   
+        await Security.get(url +'estudiante/estudiante-pendiente').then(({data})=>{
+          setEstudiantePendiente(data);
+          console.log(data)
+        }).catch((error)=>{
+        
+          console.log(error);
+          
+        })
+      }
+
       const getEstudianteBusqueda= async (dato)=>{   
         await Security.get(url +'estudiante/filtroNombre?datos='+ dato).then(({data})=>{
           setEstudiante(data);
@@ -110,7 +120,7 @@ const EstudianteProvider = ({children}) => {
 
 
     return(
-        <Provider value={{estudiante, getEstudiante,getEstudianteBusqueda , postEstudiante, putEstudiante}}>
+        <Provider value={{estudiante, getEstudiante,getEstudianteBusqueda , estudiantePendiente,getEstudiantePendiente,postEstudiante, putEstudiante}}>
         {children}
     </Provider>
     )
