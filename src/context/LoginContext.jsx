@@ -59,7 +59,9 @@ const LoginProvider = ({children}) => {
         }).catch((error)=>{
         
           console.log(error);
-          toast.error("No existe User"); 
+          toast.error("No existe User");
+        localStorage.removeItem("token" )
+
           
         })
       }
@@ -74,12 +76,12 @@ const LoginProvider = ({children}) => {
       }
 
     const RefreshToken=async()=>{
-        console.log("Resfreshing");
+        
         await axios.post(url +'refresh', {
             token: localStorage.getItem('token')
           
         }).then(({data})=>{
-             console.log(data)
+              console.log("REFRESHING...")
              setAuthToken(data.token)
              setUser(jwt_decode(data.token))
              localStorage.setItem("token" , data.token)
@@ -101,14 +103,14 @@ const LoginProvider = ({children}) => {
         if(authToken){
             RefreshToken()
         }
-    },30000)
+    },8000)
     return ()=> clearInterval(interval)
 
 }, authToken)
 
 
     return(
-        <Provider value={{signIn  ,error ,setError , user ,rol, getUser, nameUser}}>
+        <Provider value={{signIn  ,error ,setError , user ,rol, getUser, nameUser, LogoutUser}}>
         {children}
     </Provider>
     )

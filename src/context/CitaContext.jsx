@@ -15,6 +15,7 @@ const CitaProvider = ({children}) => {
     /********* STATES ************ */
     const [ cita , setCita] = useState([])
     const [citaDisponible, setCitaDisponible] = useState([])
+    const [citaTop, setCitaTop] = useState([])
 
     let fecha = localStorage.getItem("fecha")
     let idEspcialidad = localStorage.getItem("espc")
@@ -79,15 +80,20 @@ const CitaProvider = ({children}) => {
 
       const getCitaDisponible= async (fecha , id)=>{   
         await Security.get(url +'cita/cita-disponible/'+ fecha +'/'+id).then((data)=>{
-          
-          if(data.data.length === 0 ){
-            setCitaDisponible([])  
-            
-          }else{
-            setCitaDisponible(data.data)
-            
-          }
 
+          setCitaDisponible(data.data)
+         
+        }).catch((error)=>{
+         
+          console.log(error.response);
+          
+        })
+      }
+
+      const getCitaOrder= async (idEspc)=>{   
+        await Security.get(url +'cita/top/'+ idEspc).then((data)=>{
+
+          setCitaTop(data.data)
          
         }).catch((error)=>{
          
@@ -109,7 +115,7 @@ const CitaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{getCita, cita, postReservaCita, getBusquedaCita,citaDisponible , getCitaDisponible}}>
+        <Provider value={{getCita, cita, postReservaCita, getBusquedaCita,citaDisponible , getCitaDisponible, citaTop, getCitaOrder}}>
         {children}
     </Provider>
     )

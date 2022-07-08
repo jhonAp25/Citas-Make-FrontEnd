@@ -7,6 +7,7 @@ import { EstudianteContext } from '../context/EstudianteContext'
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { ColaContext } from '../context/ColaContext'
 
 
 
@@ -23,6 +24,7 @@ const FormularioCita = () => {
 
   const {citaDisponible, getCitaDisponible, postReservaCita} = useContext(CitaContext)
   const {estudiantePendiente , getEstudiantePendiente} = useContext(EstudianteContext)
+  const {getColaEspera , colaEspera} =useContext( ColaContext )
 
   let idEspc = localStorage.getItem("espc")
   let fecha = localStorage.getItem("fecha")
@@ -40,7 +42,7 @@ const FormularioCita = () => {
 
   useEffect(() => {
     getCitaDisponible(localStorage.getItem("fecha"), localStorage.getItem("espc"))
-    getEstudiantePendiente()
+    getColaEspera()
  
   }, [fecha, idEspc])
   
@@ -60,8 +62,8 @@ const FormularioCita = () => {
               <span className='text_normal font-semibold text-xs '>Estudiante Disponible</span>
               <select className='p-2 mt-1 inputText capitalize ' placeholder='Nombre estudiante' type="text"  {...register("estudiante", { required: true })}  >
                 <option value="" selected disabled hidden >Seleccione al Estudiante </option>
-                {estudiantePendiente.map(e=>(
-                  <option value={e.id}>{e.nombre}, {e.apellido}  </option>
+                {colaEspera.map(e=>(
+                  <option value={e?.estudiante?.id}>{e?.estudiante?.nombre}, {e?.estudiante?.apellido}  </option>
                 ))}
                 
 

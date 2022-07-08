@@ -3,26 +3,27 @@ import React,{useEffect , useState} from 'react'
 import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast";
 import events from '../util/events';
+import { Security } from './Security';
 
 
-let ClaseContext = React.createContext();
-let {Provider, Consumer} = ClaseContext;
+let ColaContext = React.createContext();
+let {Provider, Consumer} = ColaContext;
 
-const url = 'https://idat-gym.herokuapp.com/'
+const url = 'https://citas-make.herokuapp.com/'
 
-const ClaseProvider = ({children}) => {
+const ColaProvider = ({children}) => {
     
     /********* STATES ************ */
    
     const [evento , setEvento] =useState([])
-    const [clase , setClase] =useState([])
+    const [colaEspera , setColaEspera] =useState([])
 
 
     
 /************************* P O S T *******************************/ 
 
-    const postClase= async (dat,idDisciplina, dateTime)=>{   
-        await axios.post(url +'clase/realizar', {
+    const postCola= async (dat,idDisciplina, dateTime)=>{   
+        await axios.post(url +'cola/realizar', {
             cuposmax: dat.cuposMax,
             disciplina: idDisciplina,
             salon: dat.salon,
@@ -32,7 +33,7 @@ const ClaseProvider = ({children}) => {
 
         }).then((response)=>{
         
-          toast.success('Nueva Clase  Creada! ✔'); 
+          toast.success('Nueva Cola  Creada! ✔'); 
        
          console.log(response);
          
@@ -43,13 +44,13 @@ const ClaseProvider = ({children}) => {
       }
 
 
-    /********************** G E T -- T R A I N E R   ********************************* */
+    /**********************  G E T -- C O L A  ********************************* */
 
     
-      const getClaseDisciplina=  (id)=>{   
-         axios.get(url +'clase/disciplina/' + id).then(({data})=>{       
- 
-         setClase(data)
+      const getColaEspera=  ()=>{   
+         Security.get(url +'cola/espera').then(({data})=>{       
+          
+         setColaEspera(data)
       
         }).catch((error)=>{
         
@@ -69,7 +70,7 @@ const ClaseProvider = ({children}) => {
 
 
     return(
-        <Provider value={{clase, evento, setEvento, postClase  , getClaseDisciplina}}>
+        <Provider value={{colaEspera, evento, setEvento, postCola  , getColaEspera}}>
         {children}
     </Provider>
     )
@@ -77,4 +78,4 @@ const ClaseProvider = ({children}) => {
 
 
 
-export  {ClaseProvider, Consumer as ClaseConsumer ,ClaseContext};
+export  {ColaProvider, Consumer as ColaConsumer ,ColaContext};

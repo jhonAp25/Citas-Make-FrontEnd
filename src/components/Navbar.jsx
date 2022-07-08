@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import logo from  '../Img/logoGYM.png'
 import { AiOutlineDashboard,AiOutlineTeam ,AiOutlinePartition, AiOutlineException } from "react-icons/ai";
+import {IoMdLogIn} from 'react-icons/io'
 import { IoTrophyOutline } from "react-icons/io5";
 import {FiSlack} from "react-icons/fi";
 import {GiGymBag} from  "react-icons/gi";
@@ -8,8 +9,11 @@ import { NavLink} from 'react-router-dom';
 import { useEffect } from 'react';
 import { LoginContext } from '../context/LoginContext';
 const Navbar = () => {
-    let {getUser, nameUser, rol} = useContext(LoginContext) 
+    let {getUser, nameUser, rol, LogoutUser} = useContext(LoginContext) 
 
+    const Logout=()=>{
+        LogoutUser()   
+    }
 
 
     useEffect(() => {
@@ -49,6 +53,11 @@ const Navbar = () => {
                 <AiOutlineException size={25}  className='mx-5 ' />  <p   > Citas</p> 
                 </div>
             </NavLink>
+            <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/login" onClick={()=>Logout()} >
+          <div className='flex py-4'>
+              <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
+          </div>
+      </NavLink>
 
             
 
@@ -91,6 +100,11 @@ const Navbar = () => {
                 <FiSlack size={25}  className='mx-5 '/> <p   >Disciplina </p> 
             </div>
         </NavLink>
+        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/login" onClick={()=>Logout()} >
+          <div className='flex py-4'>
+              <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
+          </div>
+      </NavLink>
 
     </ul> 
     : rol === "ADMIN" ? 
@@ -127,9 +141,9 @@ const Navbar = () => {
           </div>
       </NavLink>
 
-      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/disciplina" >
+      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/login" onClick={()=>Logout()} >
           <div className='flex py-4'>
-              <FiSlack size={25}  className='mx-5 '/> <p   >Disciplina </p> 
+              <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>
       </NavLink>
 
