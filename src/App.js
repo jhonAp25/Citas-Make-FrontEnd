@@ -24,13 +24,6 @@ import CitaEstudiantePage from "./pages/estudiante/CitaEstudiantePage";
 
 
 
-/*
-const RouteAdmin =({ component : Component , ...rest})=>{
-  const token = localStorage.getItem('rol')
-return <Route {...rest} > {token ==='ADMIN'  ?  <Component/> : <Redirect to="/" /> }  </Route> 
-}
-
-*/
 
 
 function App() {
@@ -64,17 +57,7 @@ function App() {
             <PrivateRoute exact path="/cita-admin" component={CitaAdminPage} />
             <PrivateRoute exact path="/cita-estudiante" component={CitaEstudiantePage} />
            
-            
-          {/***
-           * 
-           *  <RouteAdmin exact path="/cliente" component={ClientePage}  />
-            <RouteAdmin exact path="/clase" component={ClasesPage} />
-            <RouteAdmin exact path="/plan_pago" component={PlanPago}  />
-            <RouteAdmin exact path="/trainer" component={TrainerPage} />
-            <RouteAdmin exact path="/disciplina" component={DisciplinaPage} />
-           
-           * 
-           */} 
+
          </div>
         
 

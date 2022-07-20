@@ -9,10 +9,6 @@ const BoxCita = ({ data }) => {
   const {getFiltroReservaCita, reservaCita} = useContext(ReservaCitaContext)
 
 
- 
-  useEffect(() => {
- 
-  }, [data]);
 
 
   return (

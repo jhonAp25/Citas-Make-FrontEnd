@@ -49,7 +49,7 @@ const FormularioEstudiante = ({ hidden, openModal }) => {
 /******************* IMG *************************** */
   const obtenerImg = (e) => {
   
-    
+    console.log(e.target.files);
 
     let body = new FormData()
     body.set("key" , '2ba0a90ff55eacd533a5bef7c9f45418')

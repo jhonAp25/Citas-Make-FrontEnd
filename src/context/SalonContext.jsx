@@ -2,7 +2,6 @@ import React,{useEffect , useState} from 'react'
 
 import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast";
-import events from '../util/events';
 
 
 let SalonContext = React.createContext();
@@ -14,7 +13,7 @@ const SalonProvider = ({children}) => {
     
     /********* STATES ************ */
     const [ salon , setSalon] = useState([])
-  //  const [evento , setEvento] =useState([])
+
 
 
     
