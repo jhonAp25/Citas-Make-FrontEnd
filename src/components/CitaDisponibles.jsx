@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import BoxCita from './BoxCita';
+import React, { useContext, useState } from 'react'
+import { ReservaCitaContext } from '../context/ReservaCitas';
 import BoxCitaDisponible from './BoxCitaDisponible';
 import ModalConfirmacion from './ModalConfirmacion';
 
 const CitaDisponibles = ({especialidad, citaDisponible ,  getCitaOrder}) => {
+   
 
 
       /*****************CONFIGURACION******************* */
@@ -15,7 +16,7 @@ const CitaDisponibles = ({especialidad, citaDisponible ,  getCitaOrder}) => {
       const [localDate, setLocalDate]=useState("")
       const [date, setDate ]=useState(hoy.toISOString().split("T")[0])
       const [especialista, setEspecialista]= useState()
-      const [hidden , setHidden] = useState(false)
+    
 
 
       
@@ -31,17 +32,14 @@ const CitaDisponibles = ({especialidad, citaDisponible ,  getCitaOrder}) => {
         getCitaOrder(e.target.value)
       }
       
-      const openModal =()=>  setHidden(!hidden)
+     
 
-      const confirmarCita=()=>{
-            openModal() 
-      }
 
 
 
   return (
     <div>
-         <ModalConfirmacion  hidden={hidden} openModal={openModal} />
+         
         <div className='bg-gray-300 p-3' style={{minHeight : "380px"}}>
         <div className='flex items-center'>
             {localDate === ""
@@ -57,7 +55,7 @@ const CitaDisponibles = ({especialidad, citaDisponible ,  getCitaOrder}) => {
         </div>
         <div className='py-4 ' style={{borderBottom: 'solid #365B73 2px'}} >
             <div className=' flex flex-col justify-around '>
-                <label className='text_normal font-semibold text-xs '>SERVICIO</label>
+                <label className='text_normal font-semibold text-xs '>ESPECIALIDAD</label>
                 <select className='p-2 mt-1 inputText  ' placeholder='xxxxxx  ' type="text" onChange={(e)=>changeEspecialista(e)}  >
                     <option value="none" selected disabled hidden >Especialidad </option>
                     {especialidad.map(e=>(
@@ -70,7 +68,7 @@ const CitaDisponibles = ({especialidad, citaDisponible ,  getCitaOrder}) => {
         <div className='pt-4 grid auto-rows-auto' style={{maxHeight: '380px', minHeight: '300px', overflowY: 'auto'}} >
             {
                 citaDisponible.map(c=>(
-                    <div onClick={()=>confirmarCita()}>
+                    <div key={c.id}>
                     <BoxCitaDisponible data={c}  /> 
                     </div>
                 ))

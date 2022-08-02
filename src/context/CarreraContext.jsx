@@ -1,15 +1,13 @@
-import React,{useEffect , useState} from 'react'
+import React,{ useState} from 'react'
 
-import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast";
-import events from '../util/events';
 import { Security } from './Security';
+import {url} from '../util/Constante'
 
 
 let CarreraContext = React.createContext();
 let {Provider, Consumer} = CarreraContext;
 
-const url = 'https://citas-make.herokuapp.com/'
 
 const CarreraProvider = ({children}) => {
     

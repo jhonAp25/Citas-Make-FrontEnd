@@ -1,15 +1,13 @@
-import React,{useEffect , useState} from 'react'
+import React,{ useState} from 'react'
 
 import axios from 'axios';
-import toast, { Toaster } from "react-hot-toast";
-import events from '../util/events';
+import toast from "react-hot-toast";
 import { Security } from './Security';
+import {url} from '../util/Constante'
 
 
 let EspecialidadContext = React.createContext();
 let {Provider, Consumer} = EspecialidadContext;
-
-const url = 'https://citas-make.herokuapp.com/'
 
 const EspecialidadProvider = ({children}) => {
     
@@ -47,7 +45,7 @@ const EspecialidadProvider = ({children}) => {
     /********************** G E T -- E S P E C I A L I D A D    ********************************* */
 
     
-      const getEspecialidad=  (id)=>{   
+      const getEspecialidad=  ()=>{   
         Security.get(url +'especialidad').then(({data})=>{       
  
          setEspecialidad(data)

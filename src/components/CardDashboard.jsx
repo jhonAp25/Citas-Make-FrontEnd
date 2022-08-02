@@ -1,24 +1,21 @@
 import React, { useEffect } from 'react'
 import { useContext } from 'react'
 import { EstudianteContext } from '../context/EstudianteContext'
-import { DisciplinaContext } from '../context/DisciplinaContext'
-import { PlanPagoContext } from '../context/PlanPagoContext'
+
 import { BsCalendar2Date } from "react-icons/bs";
 import { MdOutlinePersonalInjury } from "react-icons/md";
 import { FaHandHoldingMedical , FaLaptopMedical} from "react-icons/fa";
 const CardDashboard = () => {
-    const {disciplina,getDisciplina} =useContext(DisciplinaContext)
-
+  
     const {estudiante,getEstudiante} =useContext(EstudianteContext)
-    const {plan,getPlan} =useContext(PlanPagoContext)
-
+   
 
 
 
     useEffect(() => {
-      getDisciplina()
+   
       getEstudiante()
-      getPlan()
+        
       
     }, []);
     return (
@@ -63,7 +60,7 @@ const CardDashboard = () => {
 
                <div className=' text_card col-span-5 flex justify-around items-center pl-5' >
                    <span className=' text-md tracking-widest font-bold' >Especialidad</span>
-                   <span className='font-bold text-3xl' >{disciplina.length}</span>
+                   <span className='font-bold text-3xl' >54</span>
                </div>
             </div>
 
@@ -80,7 +77,7 @@ const CardDashboard = () => {
 
                <div className=' text_card col-span-5 flex justify-around items-center pl-5' >
                    <span className=' text-md tracking-widest font-bold' >Especialistas</span>
-                   <span className='font-bold text-3xl'>{plan.length}</span>
+                   <span className='font-bold text-3xl'>54</span>
                </div>
             </div>
 

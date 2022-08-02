@@ -1,12 +1,11 @@
 import React, { useState, useContext , useRef} from 'react'
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import { ClienteContext } from '../context/CitaContext';
 import axios from 'axios';
 import { EstudianteContext } from '../context/EstudianteContext';
 import { CarreraContext } from '../context/CarreraContext';

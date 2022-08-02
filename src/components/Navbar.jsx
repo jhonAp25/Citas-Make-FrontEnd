@@ -5,7 +5,7 @@ import {IoMdLogIn} from 'react-icons/io'
 import { IoTrophyOutline } from "react-icons/io5";
 import {FiSlack} from "react-icons/fi";
 import {GiGymBag} from  "react-icons/gi";
-import { NavLink} from 'react-router-dom';
+import { NavLink, Outlet} from 'react-router-dom';
 import { useEffect } from 'react';
 import { LoginContext } from '../context/LoginContext';
 const Navbar = () => {
@@ -24,10 +24,11 @@ const Navbar = () => {
 
 
     return (
+        <div className='w-full flex'>
         <div className='h-screen w-1/5'  >
             <div className='w-full p-5 flex flex-col justify-center items-center' style={{height: '28%'}}>
                 <img src={logo} alt='logoGymForte' style={{width: 'auto',height: '81px'}} className='mt-3' />
-                <span className='text_normal mt-4 uppercase'> { nameUser} - {rol}</span>
+                <span className='text_normal text-xs mt-4 uppercase'> { nameUser} - {rol}</span>
             </div>
 
   
@@ -39,7 +40,7 @@ const Navbar = () => {
             ?
             <ul className='h-full w-full flex   flex-col '>
                                                                                                 
-            <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="/inicio" exact>
+            <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="dashboard" exact>
                 <div className='flex py-4'>
                     <AiOutlineDashboard  size={25} className='mx-5 '   /> <p  >Dashboard </p> 
                 </div>
@@ -48,12 +49,12 @@ const Navbar = () => {
 
             
 
-            <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold  "className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="/cita-estudiante"  >
+            <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold  "className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="cita-estudiante"  >
                 <div className='flex py-4'>
                 <AiOutlineException size={25}  className='mx-5 ' />  <p   > Citas</p> 
                 </div>
             </NavLink>
-            <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/login" onClick={()=>Logout()} >
+            <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
           <div className='flex py-4'>
               <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>
@@ -68,20 +69,20 @@ const Navbar = () => {
         ?
         <ul className='h-full w-full flex  flex-col '>
                                                                                                 
-        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="/inicio" exact>
+        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="dashboard" exact>
             <div className='flex py-4'>
                 <AiOutlineDashboard  size={25} className='mx-5 '   /> <p  >Dashboard </p> 
             </div>
            
         </NavLink>
 
-        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 '  to="/estudiante-especialista" exact >
+        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 '  to="estudiante-especialista" exact >
             <div className='flex py-4'>
                 <AiOutlineTeam  size={25}  className='mx-5 '  />  <p   >Estudiantes </p> 
             </div>
         </NavLink>
 
-        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold  "className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="/cita-especialista"  >
+        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold  "className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="cita-especialista"  >
             <div className='flex py-4'>
             <AiOutlineException size={25}  className='mx-5 ' />  <p   > Citas</p> 
             </div>
@@ -100,7 +101,7 @@ const Navbar = () => {
                 <FiSlack size={25}  className='mx-5 '/> <p   >Disciplina </p> 
             </div>
         </NavLink>
-        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/login" onClick={()=>Logout()} >
+        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
           <div className='flex py-4'>
               <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>
@@ -110,20 +111,20 @@ const Navbar = () => {
     : rol === "ADMIN" ? 
       <ul className='h-full w-full flex  flex-col '>
                                                                                                 
-      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4' to="/inicio" exact>
+        <NavLink className={ ({isActive})=> (isActive ? "nav_active bg-blue-200  text-blue-500 font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="dashboard" >
           <div className='flex py-4'>
               <AiOutlineDashboard  size={25} className='mx-5 '   /> <p  >Dashboard </p> 
           </div>
          
-      </NavLink>
+        </NavLink>
 
-      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/estudiante-admin" exact >
+      <NavLink  className={ ({isActive})=> (isActive ? "nav_active bg-blue-200  text-blue-500 font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="estudiante-admin"  >
           <div className='flex py-4'>
               <AiOutlineTeam  size={25}  className='mx-5 '  />  <p   >Estudiantes </p> 
           </div>
       </NavLink>
 
-      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold  "className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="/cita-admin"  >
+      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold  "className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="cita-admin"  >
           <div className='flex py-4'>
           <AiOutlineException size={25}  className='mx-5 ' />  <p   > Citas</p> 
           </div>
@@ -141,7 +142,7 @@ const Navbar = () => {
           </div>
       </NavLink>
 
-      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/login" onClick={()=>Logout()} >
+      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
           <div className='flex py-4'>
               <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>
@@ -156,6 +157,12 @@ const Navbar = () => {
             </div>
       
  
+        </div>
+
+        <div className='flex w-full' >
+            <Outlet/>
+        </div>
+
         </div>
     )
 }

@@ -17,7 +17,7 @@ const CitaEstudiantePage = () => {
   
 
   return (
-    <div className='flex flex-col  px-20 pt-10  h-full  bg-gray-100' >
+    <div className='flex flex-col  w-full px-20 pt-10  h-full  bg-gray-100' >
             
         <h2 className='w-4/5 font-bold text-3xl tracking-widest text_titulo'>Cita</h2>
 

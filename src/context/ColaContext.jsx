@@ -1,15 +1,14 @@
-import React,{useEffect , useState} from 'react'
+import React,{ useState} from 'react'
 
 import axios from 'axios';
-import toast, { Toaster } from "react-hot-toast";
-import events from '../util/events';
+import toast from "react-hot-toast";
+
 import { Security } from './Security';
+import {url} from '../util/Constante'
 
 
 let ColaContext = React.createContext();
 let {Provider, Consumer} = ColaContext;
-
-const url = 'https://citas-make.herokuapp.com/'
 
 const ColaProvider = ({children}) => {
     

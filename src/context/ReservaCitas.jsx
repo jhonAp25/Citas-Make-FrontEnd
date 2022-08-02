@@ -2,14 +2,13 @@ import React,{useEffect , useState} from 'react'
 
 import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast";
-import events from '../util/events';
 import { Security } from './Security';
+import {url} from '../util/Constante'
 
 
 let ReservaCitaContext = React.createContext();
 let {Provider, Consumer} = ReservaCitaContext;
 
-const url = 'https://idat-gym.herokuapp.com/'
 
 const ReservaCitaProvider = ({children}) => {
     
@@ -22,20 +21,19 @@ const ReservaCitaProvider = ({children}) => {
     
 /************************* P O S T *******************************/ 
 
-    const postReservaCita= async (dat,idDisciplina, dateTime)=>{   
-        await axios.post(url +'reservaCita/realizar', {
-            cuposmax: dat.cuposMax,
-            disciplina: idDisciplina,
-            salon: dat.salon,
-            trainer: dat.trainer,
-            horaFin: dateTime.fechaFin,
-            horaIni: dateTime.fechaIni,
+    const postReservaCita= async (idCita)=>{   
+        await axios.post(url +'reservaCita', {
+          cita: { id: idCita  },
+          descripcion: "deea",
+          estudiante  : { id: 1 }
+      
 
         }).then((response)=>{
         
           toast.success('Nueva reservaCita  Creada! ✔'); 
        
          console.log(response);
+         getFiltroReservaCita(1)
          
          
         }).catch((error)=>{

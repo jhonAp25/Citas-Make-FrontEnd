@@ -3,7 +3,7 @@ import Dashboard from '../components/Dashboard'
 
 const Admin = () => {
     return (
-        <div className='flex' >
+        <div className='flex w-full' >
      
             <Dashboard/>
            

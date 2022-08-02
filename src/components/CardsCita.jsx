@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { useEffect } from 'react'
-import { useRef } from 'react'
 import { CitaContext } from '../context/CitaContext'
 import BoxCita from './BoxCita'
 
@@ -29,11 +28,11 @@ const CardsCita = ({especialidad}) => {
         getBusquedaCita(e.target.value, especialista )
       
     }
-    const changeEspecialista=(e)=>{
+    const changeEspecialidad=(e)=>{
         //console.log(hoy.toISOString().split("T")[0])
 
         setEspecialista(e.target.value)
-        localStorage.setItem("espc" , e.target.value)
+        localStorage.setItem("especialidad" , e.target.value)
         getBusquedaCita(date , e.target.value)
     }
 
@@ -52,8 +51,8 @@ const CardsCita = ({especialidad}) => {
         </div>
         <div className='py-4 ' style={{borderBottom: 'solid #365B73 2px'}} >
             <div className=' flex flex-col justify-around '>
-                <label className='text_normal font-semibold text-xs '>SERVICIO</label>
-                <select className='p-2 mt-1 inputText  ' placeholder='xxxxxx  ' type="text" onChange={(e)=>changeEspecialista(e)}  >
+                <label className='text_normal font-semibold text-xs uppercase '>Especialidad</label>
+                <select className='p-2 mt-1 inputText  ' placeholder='xxxxxx  ' type="text" onChange={(e)=>changeEspecialidad(e)}  >
                     <option value="none" selected disabled hidden >Especialidad </option>
                     {especialidad.map(e=>(
                         <option value={e.id}>{e.descripcion}</option>

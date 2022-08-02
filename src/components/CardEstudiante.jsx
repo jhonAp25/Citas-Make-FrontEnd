@@ -1,65 +1,43 @@
 import React from 'react'
 import { BsPhone } from "react-icons/bs";
-import { AiOutlineMail, AiFillEdit } from "react-icons/ai";
+import { AiOutlineMail } from "react-icons/ai";
+import {GiSandsOfTime} from 'react-icons/gi'
 
 const CardEstudiante = ({ data }) => {
     return (
-        <div className=' rounded-xl bg-white   flex justify-between ' style={{ width: '100%', height: 'auto', boxShadow: '0px 5px 11px rgb(63 97 135 / 28%)' }}>
-
-            <div className='flex flex-col flex-auto '>
-
-                <div className='flex  flex-col mb-2 justify-center items-center mt-3' >
-                    <p className='font-normal  text-xl uppercase text_titulo02'>{data?.nombre}, {data?.apellido}</p>
-                </div>
-
-
-                <div className='flex w-full'>
-
-                    <div className='flex flex-col flex-initial  justify-center items-center mb-4 ml-4' style={{width: "20%"}} >
-
-                        {/** <img src="https://i.imgur.com/pMTKt20.jpg" alt=""  className='rounded-full' style={{width: '120px' , height : '120px'}} />* */}
-                        {data?.foto === ''
-                            ? <div className='rounded-full flex justify-center items-center ' style={{ width: '90px', height: '90px', background: '#011826' }} >
-                                <span className='text-white font-semibold text-3xl uppercase'>  {data?.apellido?.charAt(0)}{data?.nombre?.charAt(0)} </span>
-                            </div>
-                            : <img src={data.foto} alt="" className='rounded-full' style={{ width: '90px', height: '90px', objectFit: 'cover' }} />}
-
-                        <p className='text-xs font-ligth flex align-center justify-center  mt-3 truncate py-1 px-2  bg-red-400 rounded-full  capitalize' style={{ color: '#349EB5', background: 'rgba(21, 193, 224, 0.37)' }} > {data?.carrera?.descripcion} </p>
-                    </div>
-
-
-
-                    <div className='grid grid-cols-2 grid-rows-3 justify-start pt-6 gap-2 w-full ml-5' >
-
-
-                        <div className='flex items-center col-span-1' style={{ color: '#012340', fontSize: '15px' }}  >
-                            <BsPhone size={20} className='mr-2' />
-                            <span style={{ color: 'rgba(63, 97, 140, 0.7)' }} >{data?.telefono}</span>
-                        </div>
-                        <div className='flex items-center col-span-1' style={{ color: '#012340', fontSize: '15px' }}  >
-                            <AiOutlineMail size={20} className='mr-2' />
-                            <span style={{ color: 'rgba(63, 97, 140, 0.7)' }} >{data?.correo}</span>
-                        </div>
-                        <div className='flex items-center col-span-1' style={{ color: '#012340', fontSize: '15px' }}  >
-                            <AiOutlineMail size={20} className='mr-2' />
-                            <span style={{ color: 'rgba(63, 97, 140, 0.7)' }} >{data?.correo}</span>
-                        </div>
-                        <div className='flex items-center row-span-1' style={{ color: '#012340', fontSize: '15px' }}  >
-                            <AiOutlineMail size={20} className='mr-2' />
-                            <span style={{ color: 'rgba(63, 97, 140, 0.7)' }} >{data?.correo}</span>
-                        </div>
-
-                    </div>
-
-
-                </div>
-            </div>
-
-            <div className='flex justify-center flex-initial rounded-br-xl rounded-tr-xl items-center btn_secondary h-full p-2'>
-                <AiFillEdit size={20} className='mr-2' />
-            </div>
-
+        <div className='border  rounded-lg flex flex-col mt-5 cursor-pointer shadow-xl card_estudiante ' style={{width : '100%'}} >
+        <div  className='h-3/4 relative  header_estudiante ' style={{zIndex: '100'}} >
+            <img className=' object-cover rounded-t-lg  ' style={{minWidth: 278, maxHeight: 180 , width:'100%'}}  src={data?.foto} alt="perfil trainer" width={278} height={230} />
+            <div className='absolute bottom-2 left-2  pl-2 pr-2 etiqueta_carrera '  ><span className='font-light text-xs '>{data?.carrera?.descripcion}</span></div>
         </div>
+
+        <div className='flex p-2 flex-col h-full ' >
+            <p className='w-full  text-sm text_normal uppercase  truncate tracking-wide '>{data.nombre}, {data.apellido}</p>
+
+            <div className='flex flex-col w-full justify-between mt-2'>
+                <div className='flex'>   
+                <GiSandsOfTime size={20} className='mr-2' color='#365B73' />
+                    <p className=' text-sm text_normal '>{new Date().getFullYear()  - new Date(data.fecnac).getFullYear()   } años</p>
+                </div>
+
+                <div  className='flex mt-2'>
+                 <AiOutlineMail size={20} className='mr-2' color='#365B73' />
+                    <p className=' text-sm text_normal italic '>{data?.correo}</p>
+                </div>
+
+                <div className='flex mt-2'>
+                    <BsPhone size={20} className='mr-2' color='#365B73' />
+                    <a className=' text-sm text_normal focus:border-b-2 border-blue-300' href={`https://wa.me/${data?.telefono}`} >{data?.telefono}</a>
+                </div>
+
+               
+                
+            </div>
+        </div>
+        
+    </div>
+
+
     )
 }
 

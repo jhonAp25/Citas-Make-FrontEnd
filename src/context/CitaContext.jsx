@@ -1,14 +1,14 @@
 import React,{useEffect , useState} from 'react'
 
-import axios from 'axios';
-import toast, { Toaster } from "react-hot-toast";
+
+import toast from "react-hot-toast";
 import { Security } from './Security';
+import {url} from '../util/Constante'
 
 
 let CitaContext = React.createContext();
 let {Provider, Consumer} = CitaContext;
 
-const url = 'https://citas-make.herokuapp.com/'
 
 const CitaProvider = ({children}) => {
     
@@ -16,13 +16,28 @@ const CitaProvider = ({children}) => {
     const [ cita , setCita] = useState([])
     const [citaDisponible, setCitaDisponible] = useState([])
     const [citaTop, setCitaTop] = useState([])
+    const [citasAgregadas , setCitasAgregadas] = useState([])
 
     let fecha = localStorage.getItem("fecha")
-    let idEspcialidad = localStorage.getItem("espc")
+    let idEspcialidad = localStorage.getItem("especialidad")
 
 
     
 /************************* P O S T *******************************/ 
+
+    const postCita = async (fecha,horaInicio, horaFin )=>{   
+      await Security.post(url +'cita', {
+          especialista: {id: localStorage.getItem("especialista") },
+          fecha: fecha,
+          horaFin: horaFin,
+          horaInicio: horaInicio, 
+      }).then((response)=>{
+
+        console.log(response)
+        toast.success('Cita creada ✔'); 
+
+      }).catch((error)=> console.log(error))
+    }
 
     const postReservaCita = async (data)=>{   
         await Security.post(url +'reservaCita', {
@@ -45,9 +60,6 @@ const CitaProvider = ({children}) => {
       const getCita= async ()=>{   
         await Security.get(url +'cita').then((data)=>{
             setCita(data.data);
-
-           
-         
 
 
             console.log(data);
@@ -73,6 +85,18 @@ const CitaProvider = ({children}) => {
          
         }).catch((error)=>{
           toast.error('Seleccione el servicio')
+          console.log(error.response);
+          
+        })
+      }
+
+      const getfiltroFechaEspecialista=( id, fecha)=>{   
+        Security.get(url +'cita/cita-especialista-fecha/'+ id +'/'+fecha ).then(({data})=>{
+          
+         setCitasAgregadas(data)
+         
+        }).catch((error)=>{
+          
           console.log(error.response);
           
         })
@@ -115,7 +139,7 @@ const CitaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{getCita, cita, postReservaCita, getBusquedaCita,citaDisponible , getCitaDisponible, citaTop, getCitaOrder}}>
+        <Provider value={{getCita, cita, postReservaCita, getBusquedaCita,citaDisponible , getCitaDisponible, citaTop, getCitaOrder, postCita,citasAgregadas, getfiltroFechaEspecialista}}>
         {children}
     </Provider>
     )

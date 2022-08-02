@@ -2,12 +2,12 @@ import React,{useEffect , useState} from 'react'
 
 import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast";
+import {url} from '../util/Constante'
 
 
 let SalonContext = React.createContext();
 let {Provider, Consumer} = SalonContext;
 
-const url = 'https://idat-gym.herokuapp.com/'
 
 const SalonProvider = ({children}) => {
     

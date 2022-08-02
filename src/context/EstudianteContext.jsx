@@ -1,14 +1,14 @@
-import React,{useEffect , useState} from 'react'
+import React,{ useState} from 'react'
 
 import axios from 'axios';
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import {Security} from "./Security"
+import {url} from '../util/Constante'
 
 
 let EstudianteContext = React.createContext();
 let {Provider, Consumer} = EstudianteContext;
 
-const url = 'https://citas-make.herokuapp.com/'
 
 const EstudianteProvider = ({children}) => {
     
@@ -18,11 +18,11 @@ const EstudianteProvider = ({children}) => {
 
 
 
-    
+
 /************************* P O S T *******************************/ 
 
-    const postEstudiante= async (dat, imgUrl)=>{   
-        await Security.post(url +'estudiante', {
+    const postEstudiante=  (dat, imgUrl)=>{   
+         Security.post(url +'estudiante', {
         
           apellido: dat.apellido,
           dni: dat.dni,
@@ -80,8 +80,8 @@ const EstudianteProvider = ({children}) => {
 
     /********************** G E T -- T R A I N E R   ********************************* */
 
-      const getEstudiante= async ()=>{   
-        await Security.get(url +'estudiante').then(({data})=>{
+      const getEstudiante=  ()=>{   
+         Security.get(url +'estudiante').then(({data})=>{
           setEstudiante(data);
           console.log(data)
         }).catch((error)=>{
@@ -91,8 +91,8 @@ const EstudianteProvider = ({children}) => {
         })
       }
 
-      const getEstudiantePendiente= async ()=>{   
-        await Security.get(url +'estudiante/estudiante-pendiente').then(({data})=>{
+      const getEstudiantePendiente=  ()=>{   
+         Security.get(url +'estudiante/estudiante-pendiente').then(({data})=>{
           setEstudiantePendiente(data);
           console.log(data)
         }).catch((error)=>{

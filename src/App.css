@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 
@@ -56,8 +56,15 @@ color: #011826;
 
 
 
-
-
+.btn_custom{
+  background-color: #fff;
+  color: #365B73;
+  border: 1px dashed rgba(63, 97, 140, 0.4);
+  cursor: pointer;
+}
+.btn_custom:hover{
+  background-color: #365b7315;
+}
 
 .btn_primary{
   background-color: #FF3E60;
@@ -91,10 +98,23 @@ color: #011826;
 .btn_detalle:hover{
   color: #c02c47;
 }
+/*********************CARD ESTUDIANTE ETIQUETA************************/
+.etiqueta_carrera{
+  background-color: #349db554;
+  border-radius: 25px;
+  border: 1px solid #349EB5;
+  color: #349EB5;
+}
+.card_estudiante:hover .header_estudiante .etiqueta_carrera{
+  background-color: #349db5;
+  border-radius: 25px;
+  border: 1px solid #349EB5;
+  color: #46ddff;
+}
 
-
+/*******************************NAVBAR***********************/
 .nav_active{
-  background-color: #15c1e050;
+  background-color: #15c1e026;
   color: #349EB5;
 }
 .nav_item{
@@ -200,7 +220,7 @@ color: #011826;
 }
 .inputText{
   outline: none;
-  border: 1px solid #365B73;
+  border: 0.5px solid #365B73;
 }
 .inputText:focus{
   outline: 2px solid #365b7383;
@@ -256,7 +276,7 @@ color: #011826;
 
 .border_box{
   border: dashed 2px #365b73 ;
-  background-color: #365b7336;
+  background-color: #365b731f;
 }
 .border_box_danger{
   border: dashed 2px #f20544;
@@ -285,6 +305,20 @@ color: #011826;
    display: block;
    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='59' height='59' viewBox='0 0 59 59' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M44.25 9.83337H14.75C9.31916 9.83337 4.91663 14.2359 4.91663 19.6667V44.25C4.91663 49.6808 9.31916 54.0834 14.75 54.0834H44.25C49.6808 54.0834 54.0833 49.6808 54.0833 44.25V19.6667C54.0833 14.2359 49.6808 9.83337 44.25 9.83337Z' stroke='%23012340' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19.6666 4.91669V14.75M39.3333 4.91669V14.75M4.91663 24.5834H54.0833' stroke='%23012340' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
+}
+
+/*********************TIME*****************/
+
+.input_time_ini:invalid + .error_time_ini::after{
+  position: absolute;
+  content: 'El horario empieza desde la 12:00am ✖ ';
+  padding-left: 5px;
+}
+
+.input_time_fin:invalid+ .error_time_fin::after{
+  position: absolute;
+  content: 'No puedes acabar antes de empezar... ✖ ';
+  padding-left: 5px;
 }
 
 
