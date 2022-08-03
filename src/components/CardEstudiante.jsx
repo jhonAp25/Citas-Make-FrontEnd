@@ -7,13 +7,19 @@ const CardEstudiante = ({ data }) => {
     return (
         <div className='border  rounded-lg flex flex-col mt-5 cursor-pointer shadow-xl card_estudiante ' style={{width : '100%'}} >
         <div  className='h-3/4 relative  header_estudiante ' style={{zIndex: '100'}} >
-            <img className=' object-cover rounded-t-lg  ' style={{minWidth: 278, maxHeight: 180 , width:'100%'}}  src={data?.foto} alt="perfil trainer" width={278} height={230} />
-            <div className='absolute bottom-2 left-2  pl-2 pr-2 etiqueta_carrera '  ><span className='font-light text-xs '>{data?.carrera?.descripcion}</span></div>
+            
+            
         </div>
 
         <div className='flex p-2 flex-col h-full ' >
-            <p className='w-full  text-sm text_normal uppercase  truncate tracking-wide '>{data.nombre}, {data.apellido}</p>
-
+            <div className='flex items-center '>
+                <div className='avatar_circle  flex justify-center items-center'>
+                    <span className='text-bg-white text-md'>KT</span>
+                </div>
+                <p className='w-full  text-sm text_normal uppercase  truncate tracking-wide '>{data.nombre}, {data.apellido}</p>
+                <div className='bottom-2 left-2  pl-2 pr-2 etiqueta_carrera '  ><span className='font-light text-xs '>{data?.especialidad?.descripcion}</span></div>
+            </div>
+            
             <div className='flex flex-col w-full justify-between mt-2'>
                 <div className='flex'>   
                 <GiSandsOfTime size={20} className='mr-2' color='#365B73' />
