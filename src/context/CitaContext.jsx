@@ -94,7 +94,7 @@ const CitaProvider = ({children}) => {
         Security.get(url +'cita/cita-especialista-fecha/'+ id +'/'+fecha ).then(({data})=>{
           
          setCitasAgregadas(data)
-         
+         console.log(data)
         }).catch((error)=>{
           
           console.log(error.response);

@@ -27,11 +27,12 @@ function App() {
     <div className="App">
     <BrowserRouter>
       <Notificacion/> 
-            <EspecialistaProvider>
+          <EspecialistaProvider>
+          <EstudianteProvider>
       <LoginProvider>
       <EspecialidadProvider> 
   
-      <EstudianteProvider>
+      
       <CitaProvider>
       <SalonProvider>   
       <CarreraProvider>
@@ -47,10 +48,11 @@ function App() {
       </CarreraProvider>
       </SalonProvider>
       </CitaProvider>
-      </EstudianteProvider>
+      
     
       </EspecialidadProvider>
       </LoginProvider>
+      </EstudianteProvider>
   </EspecialistaProvider>
     
          

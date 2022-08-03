@@ -21,27 +21,30 @@ const EspecialistaProvider = ({children}) => {
     
 /************************* P O S T *******************************/ 
 
-  /*  const postClase= async (dat,idDisciplina, dateTime)=>{   
-        await axios.post(url +'clase/realizar', {
-            cuposmax: dat.cuposMax,
-            disciplina: idDisciplina,
-            especialista: dat.especialista,
-            trainer: dat.trainer,
-            horaFin: dateTime.fechaFin,
-            horaIni: dateTime.fechaIni,
+  const postEspecialista= async (data)=>{   
+         Security.post(url +'especialista', {
+          apellido: data.apellido ,
+          correo: data.correo,
+          dni : data.dni,
+          especialidad: { id: data.especialidad
+          },
+          fecnac : data.fecnac,
+          nombre: data.nombre,
+          telefono: data.celular
 
         }).then((response)=>{
         
-          toast.success('Nueva Clase  Creada! ✔'); 
-       
-         console.log(response);
+          toast.success('Nuevo Especialista  Creada! ✔'); 
+
+        getEspecialista()
+        console.log(response);
          
          
         }).catch((error)=>{
           console.log(error);       
         })
       }
-*/
+
 
     /********************** G E T --  E S P E C I A L I S T A  ********************************* */
 
@@ -77,7 +80,7 @@ const EspecialistaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{especialista, getEspecialista,idEspecialista, getFiltroIdEspecialista}}>
+        <Provider value={{especialista, getEspecialista,idEspecialista, getFiltroIdEspecialista, postEspecialista}}>
         {children}
     </Provider>
     )

@@ -3,6 +3,7 @@ import logo from  '../Img/logoGYM.png'
 import { AiOutlineDashboard,AiOutlineTeam ,AiOutlinePartition, AiOutlineException } from "react-icons/ai";
 import {IoMdLogIn} from 'react-icons/io'
 import { IoTrophyOutline } from "react-icons/io5";
+import {VscNotebook} from 'react-icons/vsc'
 import {FiSlack} from "react-icons/fi";
 import {GiGymBag} from  "react-icons/gi";
 import { NavLink, Outlet} from 'react-router-dom';
@@ -34,11 +35,11 @@ const Navbar = () => {
   
             <hr className='w-full mb-4' />
            
-            <div className='' style={{height: '50%'}}>
+            <div className=''  style={{height: '70%'}}>
 
             {rol === "ESTUDIANTE"
             ?
-            <ul className='h-full w-full flex   flex-col '>
+            <ul className='h-full w-full flex relative  flex-col '>
                                                                                                 
             <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="dashboard" exact>
                 <div className='flex py-4'>
@@ -101,7 +102,7 @@ const Navbar = () => {
                 <FiSlack size={25}  className='mx-5 '/> <p   >Disciplina </p> 
             </div>
         </NavLink>
-        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
+        <NavLink activeClassName="nav_active absolute bottom-0 inset-x-0 bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
           <div className='flex py-4'>
               <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>
@@ -109,7 +110,7 @@ const Navbar = () => {
 
     </ul> 
     : rol === "ADMIN" ? 
-      <ul className='h-full w-full flex  flex-col '>
+      <ul className='h-full relative w-full flex  flex-col '>
                                                                                                 
         <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="dashboard" >
           <div className='flex py-4'>
@@ -142,7 +143,13 @@ const Navbar = () => {
           </div>
       </NavLink>
 
-      <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
+      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="especialista-admin" > 
+          <div className='flex py-4'>
+              <VscNotebook size={25}  className='mx-5 '/> <p   > Asistencia </p>
+          </div>
+      </NavLink>
+
+      <NavLink activeClassName="nav_active  bg-blue-200  text-blue-500 font-bold "className='flex  absolute inset-x-0 bottom-0 font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
           <div className='flex py-4'>
               <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>

@@ -7,6 +7,7 @@ import {  useNavigate} from 'react-router-dom';
 import {url} from '../util/Constante'
 import { useContext } from 'react';
 import { EspecialistaContext } from './EspecialistaContext';
+import { EstudianteContext } from './EstudianteContext';
 
 
 
@@ -17,7 +18,9 @@ let {Provider, Consumer} = LoginContext;
 const LoginProvider = ({children}) => {
 
   /*********************** C O N T E X T *********************** */
-  const {getFiltroIdEspecialista, getEspecialista} =useContext(EspecialistaContext)
+  const {getFiltroIdEspecialista} =useContext(EspecialistaContext)
+  const {getFiltroIdEstudiante} = useContext(EstudianteContext)
+
     
     //*********************** S T A T E S ************/
 
@@ -70,7 +73,7 @@ const LoginProvider = ({children}) => {
 
             getFiltroIdEspecialista(data.surnames)
            }else if(data.roles[0].name==="ESTUDIANTE"){
-            console.log('estudiante');
+            getFiltroIdEstudiante(data.surnames)
            }
            
            

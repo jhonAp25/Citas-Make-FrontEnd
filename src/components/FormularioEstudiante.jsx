@@ -33,11 +33,7 @@ const FormularioEstudiante = ({ hidden, openModal }) => {
 
 
     const [active, setActive] = useState(false)
-    const [selectGen, setSelectGen] = useState('')
-    const [cardSelect, setCardSelect] = useState(0)
     const [imgurl, setImgUrl]=useState('')
-
-    const selectGenero = (gen) => setSelectGen(gen)
 
 
 
@@ -89,7 +85,6 @@ const myPromise =  axios({
     const cerrarModal=(e)=>{
         openModal();
         setImgUrl('')
-        setSelectGen('')
         reset(yupResolver)
 
     }
@@ -110,7 +105,7 @@ const myPromise =  axios({
                 </div>
 
 
-                <form onSubmit={handleSubmit(onSubmit)} className={`  ${active ? 'hidden ' : 'block '} flex flex-col justify-between  `} style={{ height: '80%' }}>
+                <form onSubmit={handleSubmit(onSubmit)} className={` block  flex flex-col justify-between  `} style={{ height: '80%' }}>
 
                     <div className='w-full p-5 grid grid-cols-2 grid-rows-6 gap-x-4 gap-y-2'>
 

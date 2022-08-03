@@ -21,11 +21,11 @@ const ReservaCitaProvider = ({children}) => {
     
 /************************* P O S T *******************************/ 
 
-    const postReservaCita= async (idCita)=>{   
-        await axios.post(url +'reservaCita', {
+    const postReservaCita=  (idCita)=>{   
+        Security.post(url +'reservaCita', {
           cita: { id: idCita  },
           descripcion: "deea",
-          estudiante  : { id: 1 }
+          estudiante  : { id: localStorage.getItem("estudiante") }
       
 
         }).then((response)=>{

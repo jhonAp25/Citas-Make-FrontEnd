@@ -126,13 +126,7 @@ color: #011826;
   color: #349EB5;
 }
 
-.nav_active::before{
-  content: "";
-  height: 100%;
-  width: 10px;
-  background-color:#349EB5;
-  border-radius: 0 10px 10px 0;
-}
+
 /****************Card Cliente*******************/
 .content_card:hover{
   cursor: pointer;
@@ -211,11 +205,9 @@ color: #011826;
     height: 375px;
 }
 .text_titulo_login{
- 
   font-style: normal;
   font-weight: 500;
   font-size: 34px;
-
   color: #011826;
 }
 .inputText{
