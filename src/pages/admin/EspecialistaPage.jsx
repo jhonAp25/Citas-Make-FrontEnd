@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import CardEspecialista from '../../components/CardEspecialista';
 import CardEstudiante from '../../components/CardEstudiante';
 import { EspecialistaContext } from '../../context/EspecialistaContext';
 
@@ -19,7 +20,7 @@ const EspecialistaPage = () => {
         <div className='w-full  p-2 grid grid-cols-3 gap-10 overflow-y-auto' style={{maxHeight: '34rem'}} >
 
 {especialista.map(t=>(
-    <CardEstudiante data={t}  />
+    <CardEspecialista data={t}  />
 ))}
 
 
