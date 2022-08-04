@@ -143,7 +143,7 @@ const Navbar = () => {
           </div>
       </NavLink>
 
-      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="especialista-admin" > 
+      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="asistencia-admin" > 
           <div className='flex py-4'>
               <VscNotebook size={25}  className='mx-5 '/> <p   > Asistencia </p>
           </div>

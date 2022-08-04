@@ -14,6 +14,7 @@ import AdminRouter from "./routers/AdminRouter";
 import React from "react";
 import Notificacion from "./components/Notificacion";
 import { EspecialistaProvider } from "./context/EspecialistaContext";
+import { AsistenciaProvider } from "./context/AsistenciaContext";
 
 
 
@@ -27,12 +28,11 @@ function App() {
     <div className="App">
     <BrowserRouter>
       <Notificacion/> 
-          <EspecialistaProvider>
-          <EstudianteProvider>
+      <AsistenciaProvider>
+      <EspecialistaProvider>
+      <EstudianteProvider>
       <LoginProvider>
-      <EspecialidadProvider> 
-  
-      
+      <EspecialidadProvider>  
       <CitaProvider>
       <SalonProvider>   
       <CarreraProvider>
@@ -48,13 +48,11 @@ function App() {
       </CarreraProvider>
       </SalonProvider>
       </CitaProvider>
-      
-    
       </EspecialidadProvider>
       </LoginProvider>
       </EstudianteProvider>
-  </EspecialistaProvider>
-    
+      </EspecialistaProvider>
+      </AsistenciaProvider>
          
         </BrowserRouter>
     

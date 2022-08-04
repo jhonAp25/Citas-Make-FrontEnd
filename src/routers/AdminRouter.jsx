@@ -9,6 +9,7 @@ import { LoginContext } from '../context/LoginContext'
 import CitaEspecialistaPage from '../pages/especialista/CitaEspecialistaPage'
 import CitaEstudiantePage from '../pages/estudiante/CitaEstudiantePage'
 import EspecialistaPage from '../pages/admin/EspecialistaPage'
+import AsistenciaPage from '../pages/AsistenciaPage'
 
 
 const AdminRouter = () => {
@@ -34,6 +35,7 @@ const AdminRouter = () => {
       <Route path="estudiante-admin" element={<EstudiantePage/>} />
       <Route path="cita-admin" element={<CitaAdminPage />} />
       <Route path="especialista-admin" element={<EspecialistaPage />} />
+      <Route path="asistencia-admin" element={<AsistenciaPage />} />
     </Route>
   :rol === "ESPECIALISTA" ?
 

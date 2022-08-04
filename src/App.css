@@ -325,4 +325,13 @@ color: #011826;
   color: white;
   margin-right: 14px;
 }
+/****************************ASISTENCIA*****************************/
+.etiqueta_estado_asistencia_pendiente{
+  background-color: #ffa82638;
+  border:1px solid #FFA826;
+  color: #FFA826;
+  padding: 5%;
+  font-weight: 400;
+  
+}
 
