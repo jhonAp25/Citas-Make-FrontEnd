@@ -235,22 +235,15 @@ color: #011826;
 /************card_dashboard************/
 .card_dashboard{
   box-shadow:0px 4px 15px #CFDBF8;
-  border : 2px solid #9DDCD4;
-  background-color: #9DDCD4;
+  background-color: #ffffff;
 
 }
 
-.card_dashboard:hover{
-  background-color: white;
-}
+
 .card_dashboard:hover .text_card{
-  
   background-color: white;
 }
-.card_dashboard{
-  color: #012030; 
-  background-color: #9DDCD4;
-}
+
 
 
 .card_session{

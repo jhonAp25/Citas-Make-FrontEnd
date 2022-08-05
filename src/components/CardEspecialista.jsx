@@ -16,7 +16,7 @@ const CardEspecialista = ({data}) => {
                 <div className='avatar_circle  flex justify-center items-center'>
                     <span className='text-bg-white text-md uppercase '>{data.apellido.charAt(0)}{data.nombre.charAt(0)}</span>
                 </div>
-                <p className='w-full  text-sm text_normal uppercase  truncate tracking-wide '>{data.nombre}, {data.apellido}</p>
+                <p className='w-full  text-sm text_normal uppercase  truncate tracking-wide ' title={`${data.nombre}, ${data.apellido}`} >{data.nombre}, {data.apellido}</p>
                 <div className='bottom-2 left-2  pl-2 pr-2 etiqueta_carrera '  ><span className='font-light text-xs '>{data?.especialidad?.descripcion}</span></div>
             </div>
             

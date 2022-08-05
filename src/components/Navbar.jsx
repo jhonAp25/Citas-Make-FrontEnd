@@ -70,14 +70,14 @@ const Navbar = () => {
         ?
         <ul className='h-full w-full flex  flex-col '>
                                                                                                 
-        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500 font-bold " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="dashboard" exact>
+        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500  " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="dashboard" exact>
             <div className='flex py-4'>
                 <AiOutlineDashboard  size={25} className='mx-5 '   /> <p  >Dashboard </p> 
             </div>
            
         </NavLink>
 
-        <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="estudiante-especialista" exact >
+        <NavLink className={ ({isActive})=> (isActive ? "nav_active " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="estudiante-especialista" exact >
             <div className='flex py-4'>
                 <AiOutlineTeam  size={25}  className='mx-5 '  />  <p   >Estudiantes </p> 
             </div>
@@ -91,7 +91,7 @@ const Navbar = () => {
 
         
         
-        <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="cita-especialista" > 
+        <NavLink className={ ({isActive})=> (isActive ? "nav_active  " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="cita-especialista" > 
             <div className='flex py-4'>
                 <IoTrophyOutline size={25}  className='mx-5 '/> <p   > Especialista </p>
             </div>
@@ -112,44 +112,44 @@ const Navbar = () => {
     : rol === "ADMIN" ? 
       <ul className='h-full relative w-full flex  flex-col '>
                                                                                                 
-        <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="dashboard" >
+        <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex  text_normal  cursor-pointer nav_item  mt-4" )}  to="dashboard" >
           <div className='flex py-4'>
               <AiOutlineDashboard  size={25} className='mx-5 '   /> <p  >Dashboard </p> 
           </div>
          
         </NavLink>
 
-      <NavLink  className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="estudiante-admin"  >
+      <NavLink  className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex  text_normal  cursor-pointer nav_item  mt-4" )}   to="estudiante-admin"  >
           <div className='flex py-4'>
               <AiOutlineTeam  size={25}  className='mx-5 '  />  <p   >Estudiantes </p> 
           </div>
       </NavLink>
 
-      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )} to="cita-admin"  >
+      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex  text_normal  cursor-pointer nav_item  mt-4" )} to="cita-admin"  >
           <div className='flex py-4'>
           <AiOutlineException size={25}  className='mx-5 ' />  <p   > Citas</p> 
           </div>
       </NavLink>
 
-      <NavLink activeClassName="nav_active  font-bold  "className='flex font-semibold text_normal  cursor-pointer nav_item mt-4' to="especialidad-admin"  >
+      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex  text_normal  cursor-pointer nav_item  mt-4" )}  to="especialidad-admin"  >
           <div className='flex py-4'>
           <GiGymBag size={25}  className='mx-5 ' /> <p   > Especialidad </p> 
           </div>
       </NavLink>
       
-      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="especialista-admin" > 
+      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex text_normal  cursor-pointer nav_item  mt-4" )}  to="especialista-admin" > 
           <div className='flex py-4'>
               <IoTrophyOutline size={25}  className='mx-5 '/> <p   > Especialista </p>
           </div>
       </NavLink>
 
-      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="asistencia-admin" > 
+      <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex  text_normal  cursor-pointer nav_item  mt-4" )}  to="asistencia-admin" > 
           <div className='flex py-4'>
               <VscNotebook size={25}  className='mx-5 '/> <p   > Asistencia </p>
           </div>
       </NavLink>
 
-      <NavLink activeClassName="nav_active  bg-blue-200  text-blue-500 font-bold "className='flex  absolute inset-x-0 bottom-0 font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
+      <NavLink activeClassName="nav_active  bg-blue-200  text-blue-500 font-bold "className='flex  absolute inset-x-0 bottom-0  text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
           <div className='flex py-4'>
               <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>

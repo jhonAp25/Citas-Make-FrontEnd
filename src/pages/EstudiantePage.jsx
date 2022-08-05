@@ -16,6 +16,7 @@ const EstudiantePage = () => {
     const [dataEstudiante, setDateEstudiante]=useState([])
 
     const openModal =()=>  setHidden(!hidden)
+    
     const openModalUpdat =(data)=> {
         setHiddenUpdat(!hiddenUpdat);
         console.log(data);
@@ -56,7 +57,7 @@ const EstudiantePage = () => {
         </div>
 
                         
-         <div className='w-full  p-2 grid grid-cols-3 gap-10 overflow-y-auto' style={{maxHeight: '34rem'}} >
+         <div className='w-full  p-2 grid grid-cols-4 gap-10 overflow-y-auto' style={{maxHeight: '34rem'}} >
 
             {estudiante.map(t=>(
                 <CardEstudiante data={t} openModalUpdat={openModalUpdat} />

@@ -21,63 +21,61 @@ const CardDashboard = () => {
     return (
         <div className='w-full grid grid-cols-3 gap-x-16 gap-y-10 '>
 
-            <div className='rounded-xl bg-white  col-span-1 grid grid-cols-7 cursor-pointer card_dashboard' >
-               <div className='col-span-2 flex items-center'>
-                   <div className='h-full w-full p-3 flex justify-center items-center  rounded' style={{background: '#9DDCD4'}}>
-                   <BsCalendar2Date size={35} color="#E67E22 " />
-                   </div>
+            <div className='rounded-xl bg-white  col-span-1 grid grid-cols-2 cursor-pointer card_dashboard p-4' >
+               <div className='col-span-1 flex items-center'>
+                   <span className='font-bold text-8xl' style={{color: "rgba(54, 91, 115, 0.2)"}} >{estudiante.length}0</span>
                </div>
 
-               <div className=' col-span-5 flex justify-around items-center pl-5' >
-                   <span className=' text-md tracking-widest font-bold' >Citas</span>
-                   <span className='font-bold text-3xl' >{estudiante.length}</span>
-               </div>
-            </div>
-
-
-
-            <div className='rounded-xl bg-white  col-span-1 grid grid-cols-7 cursor-pointer card_dashboard'>
-               <div className='col-span-2 flex items-center'>
-                   <div className='h-full w-full p-3 flex justify-center items-center  rounded' style={{background: '#9DDCD4'}}>
-                   <MdOutlinePersonalInjury size={35} color="#1F618D" />
-
-                   </div>
-               </div>
-
-               <div className='text_card col-span-5 flex justify-around items-center pl-5' >
-                   <span className=' text-md tracking-widest font-bold' >Estudiantes</span>
-                   <span className='font-bold text-3xl'>88</span>
-               </div>
-            </div>
-
-            <div className='rounded-xl bg-white  col-span-1 grid grid-cols-7 cursor-pointer card_dashboard'>
-               <div className='col-span-2 flex items-center'>
-                   <div className='h-full w-full p-3 flex justify-center items-center  rounded' style={{background: '#9DDCD4'}}>
-                   <FaLaptopMedical  size={35} color="#239B56" />
-                 
-                   </div>
-               </div>
-
-               <div className=' text_card col-span-5 flex justify-around items-center pl-5' >
-                   <span className=' text-md tracking-widest font-bold' >Especialidad</span>
-                   <span className='font-bold text-3xl' >54</span>
+               <div className=' col-span-1 flex flex-col justify-around items-center justify-center pl-5' >
+                    <span className=' text_normal tracking-widest uppercase' >Estudiantes</span>
+                    <div className='p-3 flex justify-center items-center  rounded shadow-xl'>
+                            <BsCalendar2Date size={25} color="#E67E22 " />
+                    </div>
                </div>
             </div>
 
 
 
-            <div className='rounded-xl bg-white  col-span-1 grid grid-cols-7 cursor-pointer card_dashboard' >
-               <div className='col-span-2 flex items-center'>
-                   <div className='h-full w-full p-3 flex justify-center items-center  rounded' style={{background: '#9DDCD4  '}}>
-
-                   <FaHandHoldingMedical   size={35} color="#B03A2E" />
-
-                   </div>
+            <div className='rounded-xl bg-white  col-span-1 grid grid-cols-2 cursor-pointer card_dashboard p-4' >
+               <div className='col-span-1 flex items-center'>
+                   <span className='font-bold text-8xl' style={{color: "rgba(54, 91, 115, 0.2)"}} >{estudiante.length}0</span>
                </div>
 
-               <div className=' text_card col-span-5 flex justify-around items-center pl-5' >
-                   <span className=' text-md tracking-widest font-bold' >Especialistas</span>
-                   <span className='font-bold text-3xl'>54</span>
+               <div className=' col-span-1 flex flex-col justify-around items-center justify-center pl-5' >
+                    <span className=' text_normal tracking-widest uppercase' >Estudiantes</span>
+                    <div className='p-3 flex justify-center items-center  rounded shadow-xl'>
+                            <BsCalendar2Date size={25} color="#E67E22 " />
+                    </div>
+               </div>
+            </div>
+
+
+            <div className='rounded-xl bg-white  col-span-1 grid grid-cols-2 cursor-pointer card_dashboard p-4' >
+               <div className='col-span-1 flex items-center'>
+                   <span className='font-bold text-8xl' style={{color: "rgba(54, 91, 115, 0.2)"}} >{estudiante.length}0</span>
+               </div>
+
+               <div className=' col-span-1 flex flex-col justify-around items-center justify-center pl-5' >
+                    <span className=' text_normal tracking-widest uppercase' >Estudiantes</span>
+                    <div className='p-3 flex justify-center items-center  rounded shadow-xl'>
+                            <BsCalendar2Date size={25} color="#E67E22 " />
+                    </div>
+               </div>
+            </div>
+
+
+
+
+            <div className='rounded-xl bg-white  col-span-1 grid grid-cols-2 cursor-pointer card_dashboard p-4' >
+               <div className='col-span-1 flex items-center'>
+                   <span className='font-bold text-8xl' style={{color: "rgba(54, 91, 115, 0.2)"}} >{estudiante.length}0</span>
+               </div>
+
+               <div className=' col-span-1 flex flex-col justify-around items-center justify-center pl-5' >
+                    <span className=' text_normal tracking-widest uppercase' >Estudiantes</span>
+                    <div className='p-3 flex justify-center items-center  rounded shadow-xl'>
+                            <BsCalendar2Date size={25} color="#E67E22 " />
+                    </div>
                </div>
             </div>
 
