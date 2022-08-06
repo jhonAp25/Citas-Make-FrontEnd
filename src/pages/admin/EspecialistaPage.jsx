@@ -9,6 +9,7 @@ const EspecialistaPage = () => {
     let { especialista, getEspecialista} = useContext(EspecialistaContext);
 
     const [hidden , setHidden] = useState(false)
+    const [data, setData] = useState([])
 
     const openModal =()=>  setHidden(!hidden)
 
@@ -28,14 +29,14 @@ const EspecialistaPage = () => {
                     <input type="text"   name="" className='w-full p-2 rounded-full  focus:outline-none'  />  <FiSearch size={20} color='#011826' className='mr-3' /> 
                 </div>
                 <button className='btn_primary px-5 ml-4' onClick={()=>openModal()}> Agregar </button>
-                <FormularioEspecialista hidden={hidden} openModal={openModal}   />
+                <FormularioEspecialista hidden={hidden} openModal={openModal} data={data}  setData={setData} />
         </div>
 
         <div className='w-full  p-2 grid grid-cols-3 gap-10 overflow-y-auto' style={{maxHeight: '34rem'}} >
 
-{especialista.map(t=>(
-    <CardEspecialista data={t}  />
-))}
+        {especialista.map(t=>(
+            <CardEspecialista data={t} openModal={openModal}  setData={setData} />
+        ))}
 
 
 </div>

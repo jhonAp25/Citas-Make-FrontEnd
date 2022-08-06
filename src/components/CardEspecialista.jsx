@@ -3,7 +3,14 @@ import { BsPhone } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import {GiSandsOfTime} from 'react-icons/gi'
 
-const CardEspecialista = ({data}) => {
+const CardEspecialista = ({data, openModal, setData}) => {
+
+
+    const ModalActualizacion=()=>{
+        setData(data)
+        openModal()
+    }
+
   return (
     <div className='border  rounded-lg flex flex-col mt-5 cursor-pointer shadow-xl card_estudiante ' style={{width : '100%'}} >
         <div  className='h-3/4 relative  header_estudiante ' style={{zIndex: '100'}} >
@@ -36,7 +43,7 @@ const CardEspecialista = ({data}) => {
                     <a className=' text-sm text_normal focus:border-b-2 border-blue-300' href={`https://wa.me/${data?.telefono}`} >{data?.telefono}</a>
                 </div>
 
-               
+                <button  className='btn_secondary mt-4 p-1 rounded' onClick={()=>ModalActualizacion()} >Editar</button>
                 
             </div>
         </div>

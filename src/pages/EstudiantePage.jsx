@@ -12,18 +12,10 @@ const EstudiantePage = () => {
 
 
     const [hidden , setHidden] = useState(false)
-    const [hiddenUpdat , setHiddenUpdat] = useState(false)
-    const [dataEstudiante, setDateEstudiante]=useState([])
+    const [data, setData] = useState([])
+   
 
     const openModal =()=>  setHidden(!hidden)
-    
-    const openModalUpdat =(data)=> {
-        setHiddenUpdat(!hiddenUpdat);
-        console.log(data);
-        setDateEstudiante(data)
-    }
-
-
 
     const filtroestudiante=(e)=>{
         getEstudianteBusqueda(e.target.value)
@@ -43,7 +35,7 @@ const EstudiantePage = () => {
             
         <h2 className='w-4/5 font-bold text-3xl tracking-widest text_titulo'>estudiante</h2>
         
-       <FormularioEstudiante hidden={hidden} openModal={openModal}   />
+       <FormularioEstudiante hidden={hidden} openModal={openModal} setData={setData} data={data}   />
        {/** <Updateestudiante hiddenUpdat={hiddenUpdat} dataestudiante={dataestudiante} openModalUpdat={openModalUpdat}/> */}
      
 
@@ -60,7 +52,7 @@ const EstudiantePage = () => {
          <div className='w-full  p-2 grid grid-cols-4 gap-10 overflow-y-auto' style={{maxHeight: '34rem'}} >
 
             {estudiante.map(t=>(
-                <CardEstudiante data={t} openModalUpdat={openModalUpdat} />
+                <CardEstudiante data={t} openModal={openModal}  setData={setData} />
             ))}
            
             

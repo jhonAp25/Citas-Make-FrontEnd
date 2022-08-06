@@ -21,7 +21,7 @@ const EspecialistaProvider = ({children}) => {
     
 /************************* P O S T *******************************/ 
 
-  const postEspecialista= async (data)=>{   
+  const postEspecialista=(data)=>{   
          Security.post(url +'especialista', {
           apellido: data.apellido ,
           correo: data.correo,
@@ -44,6 +44,32 @@ const EspecialistaProvider = ({children}) => {
           console.log(error);       
         })
       }
+
+
+      const putEspecialista=(data)=>{   
+        Security.put(url +'especialista', {
+         id: data.id,
+         apellido: data.apellido ,
+         correo: data.correo,
+         dni : data.dni,
+         especialidad: { id: data.especialidad
+         },
+         fecnac : data.fecnac,
+         nombre: data.nombre,
+         telefono: data.celular
+
+       }).then((response)=>{
+       
+         toast.success('Especialista  Actualizado! ✔'); 
+
+       getEspecialista()
+       console.log(response);
+        
+        
+       }).catch((error)=>{
+         console.log(error);       
+       })
+     }
 
 
     /********************** G E T --  E S P E C I A L I S T A  ********************************* */
@@ -80,7 +106,7 @@ const EspecialistaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{especialista, getEspecialista,idEspecialista, getFiltroIdEspecialista, postEspecialista}}>
+        <Provider value={{especialista, getEspecialista,idEspecialista, getFiltroIdEspecialista, postEspecialista, putEspecialista}}>
         {children}
     </Provider>
     )

@@ -25,14 +25,14 @@ const schema = yup.object().shape({
 
 
 
-const FormularioEstudiante = ({ hidden, openModal }) => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(schema) });
-    const { postEstudiante } = useContext(EstudianteContext);
+const FormularioEstudiante = ({ hidden, openModal, data }) => {
+    const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm({ resolver: yupResolver(schema) });
+    const { postEstudiante , putEstudiante } = useContext(EstudianteContext);
     const { getCarrera, carrera} = useContext(CarreraContext);
 
 
 
-    const [active, setActive] = useState(false)
+    const [typeForm , setTypeForm] =useState()
     const [imgurl, setImgUrl]=useState('')
 
 
@@ -73,13 +73,20 @@ const myPromise =  axios({
 
 
 
-    const onSubmit = (data, e) => {
-       
+    const onSubmitReg = (data, e) => {
+     
         postEstudiante(data, imgurl)
         e.target.reset()
         reset(yupResolver)
         openModal();
 
+    }
+
+    const onSubmitUpd =(data, e)=>{
+        putEstudiante(data, imgurl)
+        e.target.reset()
+        reset(yupResolver)
+        openModal();
     }
 
     const cerrarModal=(e)=>{
@@ -91,8 +98,20 @@ const myPromise =  axios({
 
    
     useEffect(() => {
+        setTypeForm(data.length !== 0)
+
+        setValue("id", data.id);
+        setValue("nombre", data.nombre);
+        setValue("apellido", data.apellido);
+        setValue("correo", data.correo);
+        setValue("celular", data.telefono);
+        setValue("fecnac", data.fecnac);
+        setValue("dni", data.dni);
+        setImgUrl(data.foto)
+        setValue("carrera", data?.carrera?.id);
+
         getCarrera()
-     }, []);
+     }, [data]);
 
 
 
@@ -105,7 +124,7 @@ const myPromise =  axios({
                 </div>
 
 
-                <form onSubmit={handleSubmit(onSubmit)} className={` block  flex flex-col justify-between  `} style={{ height: '80%' }}>
+                <form onSubmit={ typeForm ?  handleSubmit(onSubmitUpd): handleSubmit(onSubmitReg)} className={` block  flex flex-col justify-between  `} style={{ height: '80%' }}>
 
                     <div className='w-full p-5 grid grid-cols-2 grid-rows-6 gap-x-4 gap-y-2'>
 
@@ -169,14 +188,13 @@ const myPromise =  axios({
                         <div className=' col-span-1 flex flex-col justify-around'>
 
                             <span className='text_normal font-semibold text-xs '>CARRERA </span>
-                            <input className='p-2 mt-1 inputText ' placeholder='00000000' type="text" list='list_carrera'  {...register("carrera", { required: true })} />
-                            <datalist id='list_carrera' >
+                            
+                            <select  className='p-2 mt-1 inputText '  {...register("carrera", { required: true })} >
+                            <option value="" selected disabled hidden >Seleccione la especialidad </option>
                                 {carrera.map(c=>(
-                                    <option style={{color: "red"}} className="uppercase" value={`${c.descripcion}-${c.id}`}  />
-                                   
-                                ))}
-                                
-                            </datalist>
+                                    <option  key={c.id}  value={c.id} > {c.descripcion}</option>   
+                                ))}    
+                            </select>
                             <p className={` ${errors.carrera? "" : "hidden" } text-left text-xs font-normal m-0 text-red-600`}>{errors.carrera?.message}</p>
                             
 

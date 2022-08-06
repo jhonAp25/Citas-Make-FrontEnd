@@ -32,7 +32,7 @@ const EstudianteProvider = ({children}) => {
           telefono: dat.celular,
           nombre: dat.nombre, 
           correo: dat.correo,
-          carrera:{id : dat.carrera.split("-")[1]} 
+          carrera:{id : dat.carrera} 
         }).then((response)=>{
         
           toast.success('Estudiante nuevo Creado! ✔'); 
@@ -50,23 +50,24 @@ const EstudianteProvider = ({children}) => {
 
 
       
-      const putEstudiante=  (dat, dataEstudiante)=>{   
-        Security.put(url +'estudiante/update', {
-             altura: dat.altura,
-             descripcion: dat.descripcion,
-             disciplinas: dataEstudiante.disciplinas.id,
-             foto: dataEstudiante.foto,
-             genero: dataEstudiante.genero,
-             id: dataEstudiante.id,
-             peso: dat.peso,
-             telefono: dat.telefono
+      const putEstudiante=  (dat, imgUrl)=>{   
+        Security.put(url +'estudiante', {
+          id: dat.id,
+          apellido: dat.apellido,
+          dni: dat.dni,
+          fecnac: dat.fecnac,
+          foto: imgUrl,
+          telefono: dat.celular,
+          nombre: dat.nombre, 
+          correo: dat.correo,
+          carrera:{id : dat.carrera} 
                
         }).then((response)=>{
-          console.log(response);
+         
           getEstudiante()
           toast.success('Estudiante Actualizado! ✔'); 
         }).catch((error)=>{
-          toast.error('Estudiante Actualizado! ✔'); 
+          toast.error('Error Actualizado! ✔'); 
           console.log(error.response.data);
           
         })
