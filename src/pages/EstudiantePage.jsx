@@ -35,7 +35,7 @@ const EstudiantePage = () => {
             
         <h2 className='w-4/5 font-bold text-3xl tracking-widest text_titulo'>estudiante</h2>
         
-       <FormularioEstudiante hidden={hidden} openModal={openModal} setData={setData} data={data}   />
+       <FormularioEstudiante hidden={hidden} openModal={openModal} setData={setData} data={data} />
        {/** <Updateestudiante hiddenUpdat={hiddenUpdat} dataestudiante={dataestudiante} openModalUpdat={openModalUpdat}/> */}
      
 

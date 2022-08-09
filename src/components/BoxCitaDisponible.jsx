@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import {AiOutlineClockCircle, AiOutlineCalendar} from "react-icons/ai"
 import {RiUserHeartLine} from 'react-icons/ri'
-import { ReservaCitaContext } from '../context/ReservaCitas'
 import ModalConfirmacion from './ModalConfirmacion'
 
 const BoxCitaDisponible = ({ data }) => {

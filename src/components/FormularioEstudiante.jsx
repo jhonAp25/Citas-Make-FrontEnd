@@ -25,14 +25,13 @@ const schema = yup.object().shape({
 
 
 
-const FormularioEstudiante = ({ hidden, openModal, data }) => {
+const FormularioEstudiante = ({ hidden, openModal, data , setData}) => {
     const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm({ resolver: yupResolver(schema) });
     const { postEstudiante , putEstudiante } = useContext(EstudianteContext);
     const { getCarrera, carrera} = useContext(CarreraContext);
 
 
 
-    const [typeForm , setTypeForm] =useState()
     const [imgurl, setImgUrl]=useState('')
 
 
@@ -82,8 +81,8 @@ const myPromise =  axios({
 
     }
 
-    const onSubmitUpd =(data, e)=>{
-        putEstudiante(data, imgurl)
+    const onSubmitUpd =(datas, e)=>{
+        putEstudiante(datas, imgurl)
         e.target.reset()
         reset(yupResolver)
         openModal();
@@ -93,13 +92,14 @@ const myPromise =  axios({
         openModal();
         setImgUrl('')
         reset(yupResolver)
+        setData([])
+
 
     }
 
    
     useEffect(() => {
-        setTypeForm(data.length !== 0)
-
+        
         setValue("id", data.id);
         setValue("nombre", data.nombre);
         setValue("apellido", data.apellido);
@@ -119,14 +119,18 @@ const myPromise =  axios({
     return (
         <div className='modal flex justify-center items-center' style={{ display: hidden ? ' ' : 'none' }}>
             <div className=' bg-white text_subtitulo font-semibold ' style={{ width: '50%' }}>
-                <div className='text-center p-5  text-xl'>
+                <div className='text-center p-5  text-xl font-normal bg_primary'>
+                    {data.length !== 0 ? 
+                    <p>Actualizar - Estudiante</p>:
                     <p>Nuevo - Estudiante</p>
+                    }
+                  
                 </div>
 
 
-                <form onSubmit={ typeForm ?  handleSubmit(onSubmitUpd): handleSubmit(onSubmitReg)} className={` block  flex flex-col justify-between  `} style={{ height: '80%' }}>
+                <form onSubmit={ data.length !== 0 ?  handleSubmit(onSubmitUpd): handleSubmit(onSubmitReg)} className={` block  flex flex-col justify-between  `} style={{ height: '80%' }}>
 
-                    <div className='w-full p-5 grid grid-cols-2 grid-rows-6 gap-x-4 gap-y-2'>
+                    <div className={`w-full p-5 grid grid-cols-2 ${data.length !== 0 ? 'grid-rows-4' : 'grid-rows-6' }  gap-x-4 gap-y-2`}>
 
                         <div className=' row-span-5 col-span-1  flex '>
                             <div onClick={() => textFile.current.click()} className='flex flex-col w-full justify-around'>
@@ -175,16 +179,18 @@ const myPromise =  axios({
                             <p className={` ${errors.correo? "" : "hidden" } text-left text-xs font-normal m-0 text-red-600`}>{errors.correo?.message}</p>
 
                         </div>
-
+                        {data.length !== 0 ? null :
                         <div className=' col-span-1 flex flex-col justify-around'>
                             <span className='text_normal font-semibold text-xs '>FECHA DE NACIMIENTO </span>
                             <input className='p-2 mt-1 inputText ' placeholder='00/00/2000'   max="2005-12-31" type="date"   {...register("fecnac", { required: true })} />
                             <p className={` ${errors.fecnac? "" : "hidden" } text-left text-xs font-normal m-0 text-red-600`}>{errors.fecnac?.message}</p>
 
                         </div>
+                        }              
+                        
 
                        
-
+                        {data.length !== 0 ? null :
                         <div className=' col-span-1 flex flex-col justify-around'>
 
                             <span className='text_normal font-semibold text-xs '>CARRERA </span>
@@ -199,13 +205,16 @@ const myPromise =  axios({
                             
 
                         </div>
+                        }
 
+                        {data.length !== 0 ? null :
                         <div className=' col-span-1 flex flex-col justify-around'>
                             <span className='text_normal font-semibold text-xs '>DNI </span>
                             <input className='p-2 mt-1 inputText ' placeholder='00000000' type="text"   {...register("dni", { required: true })} />
                             <p className={` ${errors.dni? "" : "hidden" } text-left text-xs font-normal m-0 text-red-600`}>{errors.dni?.message}</p>
 
-                        </div>
+                        </div> 
+                        }
                     </div>
 
                     <div className='w-full p-5 grid  grid-cols-5 gap-2'>

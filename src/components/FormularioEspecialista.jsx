@@ -77,7 +77,7 @@ const FormularioEspecialista = ({ hidden, openModal , data, setData}) => {
   return (
     <div className='modal flex justify-center items-center' style={{ display: hidden ? ' ' : 'none' }}>
             <div className=' bg-white text_subtitulo font-semibold ' style={{ width: '50%' }}>
-                <div className='text-center p-5  text-xl'>
+                <div className='text-center p-5  text-xl font-normal bg_primary'>
                     {typeForm ?
                     <p>Actualizar - Especialista</p>:
                     <p>Nuevo - Especialista</p>

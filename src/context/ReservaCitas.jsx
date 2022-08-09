@@ -16,7 +16,7 @@ const ReservaCitaProvider = ({children}) => {
    
     const [evento , setEvento] =useState([])
     const [reservaCita , setReservaCita] =useState([])
-
+    
 
     
 /************************* P O S T *******************************/ 
@@ -33,7 +33,6 @@ const ReservaCitaProvider = ({children}) => {
           toast.success('Nueva reservaCita  Creada! ✔'); 
        
          console.log(response);
-         getFiltroReservaCita(1)
          
          
         }).catch((error)=>{
@@ -47,20 +46,18 @@ const ReservaCitaProvider = ({children}) => {
     
       const getFiltroReservaCita =  (id)=>{   
          Security.get(url +'reservaCita/fitroReserva/' + id).then(({data})=>{       
- 
+           
             setReservaCita(data)
            
       
         }).catch((error)=>{
         
           console.log(error.response);
-          
-           
-          
         })
        
       }
 
+ 
 
 
    
@@ -70,7 +67,7 @@ const ReservaCitaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{reservaCita, evento, setEvento, postReservaCita  , getFiltroReservaCita}}>
+        <Provider value={{reservaCita, evento ,setEvento, postReservaCita  , getFiltroReservaCita}}>
         {children}
     </Provider>
     )

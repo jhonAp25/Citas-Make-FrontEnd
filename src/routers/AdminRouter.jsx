@@ -9,8 +9,9 @@ import { LoginContext } from '../context/LoginContext'
 import CitaEspecialistaPage from '../pages/especialista/CitaEspecialistaPage'
 import CitaEstudiantePage from '../pages/estudiante/CitaEstudiantePage'
 import EspecialistaPage from '../pages/admin/EspecialistaPage'
-import AsistenciaPage from '../pages/AsistenciaPage'
+import AsistenciaPage from '../pages/admin/AsistenciaPage'
 import EspecialidadPage from '../pages/admin/EspecialidadPage'
+import MisCitasPage from '../pages/estudiante/MisCitasPage'
 
 
 const AdminRouter = () => {
@@ -50,8 +51,8 @@ const AdminRouter = () => {
 
     <Route path='/estudiante' element={<Navbar/>} >
       <Route path="dashboard"  element={<DashboardAdmin />} />
-      <Route path="estudiante-admin" element={<EstudiantePage/>} />
-      <Route path="cita-estudiante" element={<CitaEstudiantePage  />} />
+      <Route path="cita-estudiante" element={<MisCitasPage/>} />
+      <Route path="reserva-cita-estudiante" element={<CitaEstudiantePage  />} />
     </Route>
     :
     <Route path='*' element={<h1>404</h1>} ></Route>

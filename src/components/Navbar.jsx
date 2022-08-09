@@ -35,11 +35,11 @@ const Navbar = () => {
   
             <hr className='w-full mb-4' />
            
-            <div className=''  style={{height: '70%'}}>
+            <div className=''  style={{height: '68%'}}>
 
             {rol === "ESTUDIANTE"
             ?
-            <ul className='h-full w-full flex relative  flex-col '>
+            <ul className='h-full w-full flex relative  flex-col relative '>
                                                                                                 
             <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="dashboard" exact>
                 <div className='flex py-4'>
@@ -50,17 +50,23 @@ const Navbar = () => {
 
             
 
-            <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="cita-estudiante"  >
+            <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="reserva-cita-estudiante"  >
                 <div className='flex py-4'>
-                <AiOutlineException size={25}  className='mx-5 ' />  <p   > Citas</p> 
+                <AiOutlineException size={25}  className='mx-5 ' />  <p   >Reservar Citas</p> 
                 </div>
             </NavLink>
-            <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="/" onClick={()=>Logout()} >
+
+            <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="cita-estudiante"  >
+                <div className='flex py-4'>
+                <AiOutlineException size={25}  className='mx-5 ' />  <p   >Mis Citas</p> 
+                </div>
+            </NavLink>
+
+            <NavLink activeClassName="nav_active  bg-blue-200  text-blue-500 font-bold "className='flex  absolute inset-x-0 bottom-0  text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
           <div className='flex py-4'>
               <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>
       </NavLink>
-
             
 
             
@@ -68,7 +74,7 @@ const Navbar = () => {
         </ul>
         : rol === "ESPECIALISTA" 
         ?
-        <ul className='h-full w-full flex  flex-col '>
+        <ul className='h-full w-full flex  flex-col relative '>
                                                                                                 
         <NavLink activeClassName="nav_active bg-blue-200  text-blue-500  " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="dashboard" exact>
             <div className='flex py-4'>
@@ -91,22 +97,13 @@ const Navbar = () => {
 
         
         
-        <NavLink className={ ({isActive})=> (isActive ? "nav_active  " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="cita-especialista" > 
-            <div className='flex py-4'>
-                <IoTrophyOutline size={25}  className='mx-5 '/> <p   > Especialista </p>
-            </div>
-        </NavLink>
+        
 
-        <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="/disciplina" >
-            <div className='flex py-4'>
-                <FiSlack size={25}  className='mx-5 '/> <p   >Disciplina </p> 
-            </div>
-        </NavLink>
-        <NavLink activeClassName="nav_active absolute bottom-0 inset-x-0 bg-blue-200  text-blue-500 font-bold "className='flex font-semibold text_normal  cursor-pointer nav_item  mt-4'  to="/" onClick={()=>Logout()} >
+        <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : " absolute inset-x-0 bottom-0  flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}   to="/" onClick={()=>Logout()} >
           <div className='flex py-4'>
               <IoMdLogIn size={25}  className='mx-5 '/> <p   > Cerrar Sesion </p> 
           </div>
-      </NavLink>
+        </NavLink>
 
     </ul> 
     : rol === "ADMIN" ? 

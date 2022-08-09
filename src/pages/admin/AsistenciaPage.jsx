@@ -1,5 +1,6 @@
 import React from 'react'
-import TablaAsistencia from '../components/TablaAsistencia'
+import TablaAsistencia from '../../components/TablaAsistencia'
+
 
 const AsistenciaPage = () => {
   return (

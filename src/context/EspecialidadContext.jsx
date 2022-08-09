@@ -20,20 +20,14 @@ const EspecialidadProvider = ({children}) => {
     
 /************************* P O S T *******************************/ 
 
-    const postEspecialidad= async (dat,idDisciplina, dateTime)=>{   
-        await Security.post(url +'Especialidad/realizar', {
-            cuposmax: dat.cuposMax,
-            disciplina: idDisciplina,
-            salon: dat.salon,
-            trainer: dat.trainer,
-            horaFin: dateTime.fechaFin,
-            horaIni: dateTime.fechaIni,
-
+    const postEspecialidad= (descripcion)=>{   
+        Security.post(url +'especialidad', {
+            descripcion: descripcion,
         }).then((response)=>{
         
           toast.success('Nueva Especialidad  Creada! ✔'); 
        
-         console.log(response);
+          getEspecialidad()
          
          
         }).catch((error)=>{
@@ -41,6 +35,22 @@ const EspecialidadProvider = ({children}) => {
         })
       }
 
+
+      const putEspecialidad= (id, descripcion)=>{   
+        Security.put(url +'especialidad', {
+            id : id,
+            descripcion: descripcion,
+        }).then((response)=>{
+        
+          toast.success('Especialidad  Actuallizada! ✔'); 
+          
+          getEspecialidad()
+         
+         
+        }).catch((error)=>{
+          console.log(error);       
+        })
+      }
 
     /********************** G E T -- E S P E C I A L I D A D    ********************************* */
 
@@ -68,7 +78,7 @@ const EspecialidadProvider = ({children}) => {
 
 
     return(
-        <Provider value={{especialidad, evento, setEvento, postEspecialidad  , getEspecialidad}}>
+        <Provider value={{especialidad, evento, setEvento, postEspecialidad ,putEspecialidad , getEspecialidad}}>
         {children}
     </Provider>
     )

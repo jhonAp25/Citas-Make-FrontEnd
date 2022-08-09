@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { CitaContext } from '../context/CitaContext'
 import BoxCita from './BoxCita'
 
-const CardsCita = ({especialidad}) => {
+const CardsCita = ({especialidad , setIdCita, openModal}) => {
     /*****************CONTEXT******************* */
     const {cita , getBusquedaCita} = useContext(CitaContext)
   /*****************CONFIGURACION******************* */
@@ -64,7 +64,7 @@ const CardsCita = ({especialidad}) => {
         <div className='pt-4    '>
             {
                 cita.map(c=>(
-                    <BoxCita data={c} /> 
+                    <BoxCita data={c} setIdCita={setIdCita} openModal={openModal} /> 
                 ))
             }
             

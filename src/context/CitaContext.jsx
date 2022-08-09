@@ -102,11 +102,11 @@ const CitaProvider = ({children}) => {
         })
       }
 
-      const getCitaDisponible= async (fecha , id)=>{   
-        await Security.get(url +'cita/cita-disponible/'+ fecha +'/'+id).then((data)=>{
+      const getCitaDisponible= (fecha , id)=>{   
+        Security.get(url +'cita/cita-disponible/'+ fecha +'/'+id).then((data)=>{
 
           setCitaDisponible(data.data)
-         
+          
         }).catch((error)=>{
          
           console.log(error.response);
@@ -118,7 +118,7 @@ const CitaProvider = ({children}) => {
         await Security.get(url +'cita/top/'+ idEspc).then((data)=>{
 
           setCitaTop(data.data)
-         
+          console.log(data.data);
         }).catch((error)=>{
          
           console.log(error.response);

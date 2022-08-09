@@ -1,9 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { ReservaCitaContext } from '../context/ReservaCitas';
 import BoxCitaDisponible from './BoxCitaDisponible';
-import ModalConfirmacion from './ModalConfirmacion';
 
-const CitaDisponibles = ({especialidad, citaDisponible ,  getCitaOrder}) => {
+const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
    
 
 
@@ -66,8 +64,12 @@ const CitaDisponibles = ({especialidad, citaDisponible ,  getCitaOrder}) => {
         </div>
 
         <div className='pt-4 grid auto-rows-auto' style={{maxHeight: '380px', minHeight: '300px', overflowY: 'auto'}} >
-            {
-                citaDisponible.map(c=>(
+            {citaTop.length === 0 ? 
+            <div className='flex flex-col items-center '   >
+                <span  className='text_normal font-light text-sm w-4/5 text-center'>No hay <strong className='uppercase'>citas disponibles</strong>  aun, desea entrar en Cola?</span>
+                <button className='btn_primary p-2 mt-3'>Entrar en Cola</button>
+            </div> :
+            citaTop.map(c=>(
                     <div key={c.id}>
                     <BoxCitaDisponible data={c}  /> 
                     </div>

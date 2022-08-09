@@ -26,7 +26,7 @@ const FormularioCita = () => {
   const {estudiantePendiente , getEstudiantePendiente} = useContext(EstudianteContext)
   const {getColaEspera , colaEspera} =useContext( ColaContext )
 
-  let idEspc = localStorage.getItem("espc")
+  let idEspc = localStorage.getItem("especialidad")
   let fecha = localStorage.getItem("fecha")
 
 
@@ -41,7 +41,7 @@ const FormularioCita = () => {
 }
 
   useEffect(() => {
-    getCitaDisponible(localStorage.getItem("fecha"), localStorage.getItem("espc"))
+    getCitaDisponible(localStorage.getItem("fecha"), localStorage.getItem("especialidad"))
     getColaEspera()
  
   }, [fecha, idEspc])
@@ -59,7 +59,7 @@ const FormularioCita = () => {
           <div className='mt-4 p-3 grid grid-cols-1 gap-3'>
 
             <div className=' col-span-1 flex flex-col justify-around'>
-              <span className='text_normal font-semibold text-xs '>Estudiante Disponible</span>
+              <span className='text_normal font-semibold text-xs '>Estudiantes en Cola</span>
               <select className='p-2 mt-1 inputText capitalize ' placeholder='Nombre estudiante' type="text"  {...register("estudiante", { required: true })}  >
                 <option value="" selected disabled hidden >Seleccione al Estudiante </option>
                 {colaEspera.map(e=>(

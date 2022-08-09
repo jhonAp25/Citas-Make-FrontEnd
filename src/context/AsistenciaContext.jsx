@@ -14,6 +14,7 @@ const AsistenciaProvider = ({children}) => {
     
     /********* STATES ************ */
     const [ asistencia , setAsistencia] = useState([])
+    const [asistenciaEstudiante , setAsistenciaEstudiante] =useState([])
 
 
 
@@ -34,6 +35,21 @@ const AsistenciaProvider = ({children}) => {
         })
       }
 
+
+
+      const getAsistenciaEstudiante =  (id)=>{   
+        Security.get(url +'asistencia/fitro-estudiante/' + id).then(({data})=>{       
+          
+          setAsistenciaEstudiante(data)
+          
+     
+       }).catch((error)=>{
+       
+         console.log(error.response);
+       })
+      
+     }
+
      
 
 
@@ -44,7 +60,7 @@ const AsistenciaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{asistencia, getAsistencia}}>
+        <Provider value={{asistencia,asistenciaEstudiante , getAsistencia, getAsistenciaEstudiante}}>
         {children}
     </Provider>
     )
