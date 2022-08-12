@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { ColaContext } from '../context/ColaContext';
 import BoxCitaDisponible from './BoxCitaDisponible';
 
 const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
@@ -13,6 +14,8 @@ const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
     /*****************STATES******************* */
       const [localDate, setLocalDate]=useState("")
       const [especialista, setEspecialista]= useState()
+
+      const {postCola} =useContext(ColaContext)
     
 
 

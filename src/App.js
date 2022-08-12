@@ -33,19 +33,19 @@ function App() {
       <LoginProvider>
       <EspecialidadProvider>  
       <CitaProvider>
-    
-      <CarreraProvider>
-      <ReservaCitaProvider>
       <ColaProvider>
 
+      <CarreraProvider>
+      <ReservaCitaProvider>
+    
 
         <AdminRouter/>
 
 
-      </ColaProvider>
+      
       </ReservaCitaProvider>
       </CarreraProvider>
-    
+    </ColaProvider>
       </CitaProvider>
       </EspecialidadProvider>
       </LoginProvider>
