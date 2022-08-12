@@ -33,7 +33,7 @@ const BoxCitaDisponible = ({ data }) => {
 
         <div className='flex'>
             <AiOutlineClockCircle size={18} color='#365B73' className='mr-2'/>
-          <span className="text_normal text-sm ">{data?.horaInicio.split(":")[0]+":"+ data?.horaInicio.split(":")[1]} -  {data?.horaFin.split(":")[0]+":"+data?.horaFin.split(":")[1]}</span>
+          <span className="text_normal text-sm ">{data?.horaInicio.split(":")[0]+":"+ data?.horaInicio.split(":")[1]} -  {parseInt(data?.horaInicio.split(":")[0]) + 1 + ":00 PM" }</span>
         </div> 
 
         <div className='flex'>

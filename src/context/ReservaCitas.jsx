@@ -42,7 +42,7 @@ const ReservaCitaProvider = ({children}) => {
 
 
     /********************** G E T -- R E S E R V A  ********************************* */
-
+    
     
       const getFiltroReservaCita =  (id)=>{   
          Security.get(url +'reservaCita/fitroReserva/' + id).then(({data})=>{       
@@ -57,6 +57,19 @@ const ReservaCitaProvider = ({children}) => {
        
       }
 
+      const deleteReservaCita =  (id)=>{   
+        Security.delete(url +'reservaCita/cancelar/' + id).then(({data})=>{       
+          
+          toast.success(data);
+          
+     
+       }).catch((error)=>{
+       
+         console.log(error.response);
+       })
+      
+     }
+
  
 
 
@@ -67,7 +80,7 @@ const ReservaCitaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{reservaCita, evento ,setEvento, postReservaCita  , getFiltroReservaCita}}>
+        <Provider value={{reservaCita, evento ,setEvento, postReservaCita  , getFiltroReservaCita, deleteReservaCita}}>
         {children}
     </Provider>
     )

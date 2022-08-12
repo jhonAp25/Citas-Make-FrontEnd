@@ -25,31 +25,37 @@ const CitaProvider = ({children}) => {
     
 /************************* P O S T *******************************/ 
 
-    const postCita = async (fecha,horaInicio, horaFin )=>{   
+    const postCita = async (fecha,horaInicio )=>{   
       await Security.post(url +'cita', {
           especialista: {id: localStorage.getItem("especialista") },
           fecha: fecha,
-          horaFin: horaFin,
-          horaInicio: horaInicio, 
+          horaInicio: horaInicio + ':00', 
+      }).then((response)=>{
+       
+         toast.success(response.data)
+        
+        console.log(response)
+        
+
+      }).catch((error)=> toast.error('Error!! Ya existe cupo para ese Dia'))
+    }
+
+    const postReservaCita = async (data)=>{   
+      await Security.post(url +'reservaCita', {
+        cita: {id: data.cita },
+        descripcion: data.descripcion,
+        estudiante:  {id: data.estudiante }  
       }).then((response)=>{
 
-        console.log(response)
-        toast.success('Cita creada ✔'); 
+        getBusquedaCita(fecha , idEspcialidad)
+        toast.success('Cita reservada ✔'); 
 
       }).catch((error)=> console.log(error))
     }
 
-
-          getBusquedaCita(fecha , idEspcialidad)
-          toast.success('Cita reservada ✔'); 
-
-        }).catch((error)=> console.log(error))
-      }
-
-
     
 
-    /********************** G E T -- C I T A  ********************************* */
+    /**********************  G E T -- C I T A ********************************* */
 
       const getCita= async ()=>{   
         await Security.get(url +'cita').then((data)=>{
@@ -80,6 +86,7 @@ const CitaProvider = ({children}) => {
         }).catch((error)=>{
           toast.error('Seleccione el servicio')
           console.log(error.response);
+          setCita([])
           
         })
       }
@@ -133,7 +140,7 @@ const CitaProvider = ({children}) => {
 
 
     return(
-        <Provider value={{getCita, cita, postReservaCita, getBusquedaCita,citaDisponible , getCitaDisponible, citaTop, getCitaOrder, postCita,citasAgregadas, getfiltroFechaEspecialista}}>
+        <Provider value={{getCita, cita,  getBusquedaCita,citaDisponible ,postReservaCita, getCitaDisponible, citaTop, getCitaOrder, postCita,citasAgregadas, getfiltroFechaEspecialista}}>
         {children}
     </Provider>
     )

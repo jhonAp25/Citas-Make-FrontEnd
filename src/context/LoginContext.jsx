@@ -66,7 +66,7 @@ const LoginProvider = ({children}) => {
       const getUser=()=>{   
          axios.get(url +'auth/find-user/'+ localStorage.getItem("user"))
         .then(({data})=>{
-           console.log(data)
+          
            setNameUser(data.names) 
            setRol(data.roles[0].name)   
            if(data.roles[0].name==="ESPECIALISTA"){
@@ -96,6 +96,10 @@ const LoginProvider = ({children}) => {
         setUser(null)
         localStorage.removeItem("token" )
         localStorage.removeItem("rol" )
+        localStorage.removeItem("user" )
+        localStorage.removeItem("rol" )
+        localStorage.removeItem("estudiante" )
+        localStorage.removeItem("especialista" )
         navigate('/')
       }
 

@@ -22,7 +22,7 @@ const BoxCita = ({ data , setIdCita , openModal}) => {
 
           <div className='flex '>
             <AiOutlineClockCircle size={18}  className='mr-2 text_danger'/>
-            <span className="text_danger text-xs ">{data?.horaInicio.split(":")[0]+":"+ data?.horaInicio.split(":")[1]} -  {data?.horaFin.split(":")[0]+":"+data?.horaFin.split(":")[1]}</span>
+            <span className="text_danger text-xs ">{data?.horaInicio.split(":")[0]+":"+ data?.horaInicio.split(":")[1]} -  {parseInt(data?.horaInicio.split(":")[0]) + 1 + ':00 PM'}</span>
           </div> 
 
           <div className='flex mt-1'>
@@ -47,7 +47,7 @@ const BoxCita = ({ data , setIdCita , openModal}) => {
         <div className="w-full p-2 text-center border_box">
           <div className='flex '>
             <AiOutlineClockCircle size={18}  className='mr-2 text_normal'/>
-            <span className="text_normal text-xs ">{data?.horaInicio.split(":")[0]+":"+ data?.horaInicio.split(":")[1]} -  {data?.horaFin.split(":")[0]+":"+data?.horaFin.split(":")[1]}</span>
+            <span className="text_normal text-xs ">{data?.horaInicio.split(":")[0]+":"+ data?.horaInicio.split(":")[1]} -  {parseInt(data?.horaInicio.split(":")[0]) + 1 + ':00 PM'}</span>
           </div> 
 
           <div className='flex mt-1'>

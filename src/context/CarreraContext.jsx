@@ -1,6 +1,6 @@
 import React,{ useState} from 'react'
 
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Security } from './Security';
 import {url} from '../util/Constante'
 

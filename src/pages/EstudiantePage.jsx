@@ -45,7 +45,9 @@ const EstudiantePage = () => {
                 <div className='w-full  rounded-full border flex items-center bg-white focus:ring-2   border border-gray-400  'style={{width: '40%'}}  >
                     <input type="text" onChange={(e)=>filtroestudiante(e) }  name="" className='w-full p-2 rounded-full  focus:outline-none'  />  <FiSearch size={20} color='#011826' className='mr-3' /> 
                 </div>
-                <button className='btn_primary px-5 ml-4' onClick={()=>openModal()} > Agregar </button>
+               {localStorage.getItem("rol") === "ROLE_ADMIN" ?
+               <button className='btn_primary px-5 ml-4' onClick={()=>openModal()} > Agregar </button>:
+               null } 
         </div>
 
                         

@@ -12,6 +12,7 @@ import EspecialistaPage from '../pages/admin/EspecialistaPage'
 import AsistenciaPage from '../pages/admin/AsistenciaPage'
 import EspecialidadPage from '../pages/admin/EspecialidadPage'
 import MisCitasPage from '../pages/estudiante/MisCitasPage'
+import AsistenciaHoyPage from '../pages/especialista/AsistenciaHoyPage'
 
 
 const AdminRouter = () => {
@@ -45,6 +46,7 @@ const AdminRouter = () => {
     <Route path='/especialista' element={<Navbar/>} >
       <Route path="dashboard"  element={<DashboardAdmin />} />
       <Route path="estudiante-especialista" element={<EstudiantePage/>} />
+      <Route path="asistencia-especialista" element={<AsistenciaHoyPage/>} />
       <Route path="cita-especialista" element={<CitaEspecialistaPage />} />
     </Route>
     :rol === "ESTUDIANTE" ?

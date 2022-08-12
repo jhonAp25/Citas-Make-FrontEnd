@@ -8,7 +8,7 @@ const AsistenciaPage = () => {
             
         <h2 className='w-4/5 font-bold text-3xl tracking-widest text_titulo'>Asistencia</h2>
 
-        <div className='w-full   overflow-y-auto' style={{maxHeight: '34rem'}} >
+        <div className='w-full '  >
 
             <TablaAsistencia/>
         </div>

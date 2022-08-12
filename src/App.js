@@ -3,7 +3,6 @@ import './App.css';
 import './react-big-calendar.css';
 
 import { ColaProvider } from "./context/ColaContext";
-import { SalonProvider } from "./context/SalonContext";
 import { LoginProvider } from "./context/LoginContext";
 import { EstudianteProvider } from "./context/EstudianteContext";
 import { CarreraProvider } from "./context/CarreraContext";
@@ -34,7 +33,7 @@ function App() {
       <LoginProvider>
       <EspecialidadProvider>  
       <CitaProvider>
-      <SalonProvider>   
+    
       <CarreraProvider>
       <ReservaCitaProvider>
       <ColaProvider>
@@ -46,7 +45,7 @@ function App() {
       </ColaProvider>
       </ReservaCitaProvider>
       </CarreraProvider>
-      </SalonProvider>
+    
       </CitaProvider>
       </EspecialidadProvider>
       </LoginProvider>
@@ -54,7 +53,7 @@ function App() {
       </EspecialistaProvider>
       </AsistenciaProvider>
          
-        </BrowserRouter>
+    </BrowserRouter>
     
 
     </div>

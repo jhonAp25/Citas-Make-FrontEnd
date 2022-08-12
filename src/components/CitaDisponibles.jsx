@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BoxCitaDisponible from './BoxCitaDisponible';
 
 const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
@@ -12,7 +12,6 @@ const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
      
     /*****************STATES******************* */
       const [localDate, setLocalDate]=useState("")
-      const [date, setDate ]=useState(hoy.toISOString().split("T")[0])
       const [especialista, setEspecialista]= useState()
     
 
@@ -27,16 +26,20 @@ const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
       }
 
       const changeEspecialista=(e)=>{
+        setEspecialista(e.target.value)
         getCitaOrder(e.target.value)
+       
       }
-      
-     
 
+      useEffect(() => {
+        getCitaOrder(especialista)
+      }, []);
+   
 
 
 
   return (
-    <div>
+    <div className='col-span-4'>
          
         <div className='bg-gray-300 p-3' style={{minHeight : "380px"}}>
         <div className='flex items-center'>

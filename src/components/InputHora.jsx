@@ -3,7 +3,7 @@ import { useState } from 'react'
 import {BsFillCheckCircleFill} from 'react-icons/bs'
 import {AiFillEdit} from 'react-icons/ai'
 
-const InputHora = ({postCita, fecha}) => {
+const InputHora = ({postCita, fecha, setRefresh, refresh}) => {
 
     const [horaInicio, setHoraInicio]= useState('');
     const [horaFin, setHoraFin]= useState('');
@@ -18,6 +18,7 @@ const InputHora = ({postCita, fecha}) => {
             setBlock(true)
        }  
        console.log(inputTime)
+       setRefresh(!refresh)
     }
 
     useEffect(() => {
@@ -37,7 +38,7 @@ const InputHora = ({postCita, fecha}) => {
 
                 <div className=' col-span-3 flex flex-col justify-around'>
                     <span className='text_normal font-semibold text-xs '>Hora Final</span>
-                    <input disabled={block} formNoValidate={true} className='p-2 mt-1 inputText input_time_fin'  min={horaInicio} value={horaFin} max="18:00"  type="time" onChange={(e)=>setHoraFin(e.target.value)}   />
+                    <input  formNoValidate={true} className='p-2 mt-1 inputText input_time_fin'  min={horaInicio} value={horaFin} max="18:00"  type="time" onChange={(e)=>setHoraFin(e.target.value)}   />
                     <p className='error_time_fin col-span-7 text-left text-xs font-normal m-0 text-red-600 '></p>
                   
                 </div>
