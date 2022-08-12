@@ -39,12 +39,6 @@ const CitaProvider = ({children}) => {
       }).catch((error)=> console.log(error))
     }
 
-    const postReservaCita = async (data)=>{   
-        await Security.post(url +'reservaCita', {
-          cita: {id: data.cita },
-          descripcion: data.descripcion,
-          estudiante:  {id: data.estudiante }  
-        }).then((response)=>{
 
           getBusquedaCita(fecha , idEspcialidad)
           toast.success('Cita reservada ✔'); 
