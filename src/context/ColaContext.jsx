@@ -21,14 +21,10 @@ const ColaProvider = ({children}) => {
     
 /************************* P O S T *******************************/ 
 
-    const postCola= async (dat,idDisciplina, dateTime)=>{   
-        await axios.post(url +'cola/realizar', {
-            cuposmax: dat.cuposMax,
-            disciplina: idDisciplina,
-            salon: dat.salon,
-            trainer: dat.trainer,
-            horaFin: dateTime.fechaFin,
-            horaIni: dateTime.fechaIni,
+    const postCola= ()=>{   
+        Security.post(url +'cola/realizar', {
+          estado: "PENDIENTE",
+          estudiante: { id: localStorage.getItem('estudiante')},
 
         }).then((response)=>{
         
