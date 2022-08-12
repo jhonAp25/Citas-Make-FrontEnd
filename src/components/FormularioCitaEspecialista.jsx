@@ -89,7 +89,7 @@ const FormularioCitaEspecialista = ({setRefresh , refresh}) => {
                       <span className={`rounded-lg  p-3 mr-2 ${cupo===2 ? 'btn_selected' : 'btn_outline_primary'}  `}   onClick={()=>setCupo(2)}>2</span>
                       <span className={`rounded-lg  p-3 mr-2 ${cupo===3 ? 'btn_selected' : 'btn_outline_primary'}  `}  onClick={()=>setCupo(3)}>3</span>
                       <span className={`rounded-lg  p-3 mr-2 ${cupo===4 ? 'btn_selected' : 'btn_outline_primary'}  `}  onClick={()=>setCupo(4)}>4</span>
-                      <span className={`rounded-lg  p-3 mr-2 ${cupo===10 ? 'btn_selected' : 'btn_outline_primary'}  `}   onClick={()=>setCupo(10)}>5</span>
+                      <span className={`rounded-lg  p-3 mr-2 ${cupo===5? 'btn_selected' : 'btn_outline_primary'}  `}   onClick={()=>setCupo(5)}>5</span>
                     </div>
                     <p className='error_time_ini col-span-7 text-left text-xs font-normal m-0 text-red-600'></p>
                 </div>

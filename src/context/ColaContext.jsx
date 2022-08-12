@@ -22,7 +22,7 @@ const ColaProvider = ({children}) => {
 /************************* P O S T *******************************/ 
 
     const postCola= ()=>{   
-        Security.post(url +'cola/realizar', {
+        Security.post(url +'cola', {
           estado: "PENDIENTE",
           estudiante: { id: localStorage.getItem('estudiante')},
 
@@ -34,7 +34,7 @@ const ColaProvider = ({children}) => {
          
          
         }).catch((error)=>{
-          console.log(error);       
+          toast.error('Ya te encuentras en una Cola.. ✔');  
         })
       }
 
