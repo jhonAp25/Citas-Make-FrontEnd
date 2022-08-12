@@ -76,7 +76,7 @@ const Navbar = () => {
         ?
         <ul className='h-full w-full flex  flex-col relative '>
                                                                                                 
-        <NavLink activeClassName="nav_active bg-blue-200  text-blue-500  " className='flex font-semibold text_normal  cursor-pointer nav_item mt-4 ' to="dashboard" exact>
+        <NavLink className={ ({isActive})=> (isActive ? "nav_active " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="dashboard" exact>
             <div className='flex py-4'>
                 <AiOutlineDashboard  size={25} className='mx-5 '   /> <p  >Dashboard </p> 
             </div>
@@ -92,6 +92,12 @@ const Navbar = () => {
         <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="cita-especialista"  >
             <div className='flex py-4'>
             <AiOutlineException size={25}  className='mx-5 ' />  <p   > Citas</p> 
+            </div>
+        </NavLink>
+
+        <NavLink className={ ({isActive})=> (isActive ? "nav_active font-bold " : "flex font-semibold text_normal  cursor-pointer nav_item  mt-4" )}  to="asistencia-especialista"  >
+            <div className='flex py-4'>
+            <AiOutlineException size={25}  className='mx-5 ' />  <p   > Asistencia</p> 
             </div>
         </NavLink>
 

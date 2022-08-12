@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { ColaContext } from '../context/ColaContext';
 import BoxCitaDisponible from './BoxCitaDisponible';
 
 const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
@@ -12,8 +13,9 @@ const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
      
     /*****************STATES******************* */
       const [localDate, setLocalDate]=useState("")
-      const [date, setDate ]=useState(hoy.toISOString().split("T")[0])
       const [especialista, setEspecialista]= useState()
+
+      const {postCola} =useContext(ColaContext)
     
 
 
@@ -27,16 +29,20 @@ const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
       }
 
       const changeEspecialista=(e)=>{
+        setEspecialista(e.target.value)
         getCitaOrder(e.target.value)
+       
       }
-      
-     
 
+      useEffect(() => {
+        getCitaOrder(especialista)
+      }, []);
+   
 
 
 
   return (
-    <div>
+    <div className='col-span-4'>
          
         <div className='bg-gray-300 p-3' style={{minHeight : "380px"}}>
         <div className='flex items-center'>
@@ -67,7 +73,7 @@ const CitaDisponibles = ({especialidad, citaTop ,  getCitaOrder}) => {
             {citaTop.length === 0 ? 
             <div className='flex flex-col items-center '   >
                 <span  className='text_normal font-light text-sm w-4/5 text-center'>No hay <strong className='uppercase'>citas disponibles</strong>  aun, desea entrar en Cola?</span>
-                <button className='btn_primary p-2 mt-3'>Entrar en Cola</button>
+                <button className='btn_primary p-2 mt-3' onClick={()=>postCola()} >Entrar en Cola</button>
             </div> :
             citaTop.map(c=>(
                     <div key={c.id}>

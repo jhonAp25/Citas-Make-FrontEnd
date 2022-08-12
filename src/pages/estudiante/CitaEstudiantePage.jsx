@@ -21,8 +21,10 @@ const CitaEstudiantePage = () => {
             
         <h2 className='w-4/5 font-bold text-3xl tracking-widest text_titulo'>Cita</h2>
 
-        <div className='w-full flex mt-10 mb-5 grid grid-cols-2 gap-4'>
+        <div className='w-full flex mt-10 mb-5 grid grid-cols-6 gap-4'>
+          <div className='col-span-1'></div>
           <CitaDisponibles especialidad={especialidad} citaTop={citaTop}  getCitaOrder={ getCitaOrder} />
+          <div className='col-span-1'></div>
         </div>
     </div>
   )

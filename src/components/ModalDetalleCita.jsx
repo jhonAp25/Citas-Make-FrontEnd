@@ -24,7 +24,7 @@ const ModalDetalleCita = ({hidden, openModal, idCita}) => {
 
                 <div className='flex items-center'>
                     <span className='uppercase mr-2 italic text-xs'>Nombres y apellidos: </span>
-                    <span className='font-bold'> {reservaCita?.estudiante?.nombre}, {reservaCita?.estudiante?.apellido} </span>
+                    <span className='font-bold capitalize'> {reservaCita?.estudiante?.nombre}, {reservaCita?.estudiante?.apellido} </span>
                 </div>
 
                 <div className='flex items-center'>
@@ -49,7 +49,7 @@ const ModalDetalleCita = ({hidden, openModal, idCita}) => {
 
                 <div className='flex items-center'>
                     <span className='uppercase mr-2 italic  text-xs'>Nombres y apellidos: </span>
-                    <span className='font-bold'> {reservaCita?.cita?.especialista?.nombre}, {reservaCita?.cita?.especialista?.apellido} </span>
+                    <span className='font-bold capitalize'> {reservaCita?.cita?.especialista?.nombre}, {reservaCita?.cita?.especialista?.apellido} </span>
                 </div>
 
                 <div className='flex items-center'>
@@ -59,7 +59,7 @@ const ModalDetalleCita = ({hidden, openModal, idCita}) => {
 
                 <div className='flex items-center'>
                     <span className='uppercase mr-2 italic  text-xs'>Especialidad: </span>
-                    <span className='font-bold'> {reservaCita?.cita?.especialista?.especialidad?.descripcion}</span>
+                    <span className='font-bold '> {reservaCita?.cita?.especialista?.especialidad?.descripcion}</span>
                 </div>
 
                 <div className='flex items-center mt-3'>
@@ -73,11 +73,11 @@ const ModalDetalleCita = ({hidden, openModal, idCita}) => {
                 </div>
                 <div className='flex items-center'>
                     <span className='uppercase mr-2 italic  text-xs'>Hora Inicio: </span>
-                    <span className='font-bold'> {reservaCita?.cita?.horaInicio}</span>
+                    <span className='font-bold'> {reservaCita?.cita?.horaInicio.split(":")[0]  +':00 PM ' }</span>
                 </div>
                 <div className='flex items-center'>
                     <span className='uppercase mr-2 italic  text-xs'>Hora Fin: </span>
-                    <span className='font-bold'> {reservaCita?.cita?.horaFin}</span>
+                    <span className='font-bold'> {parseInt(reservaCita?.cita?.horaInicio.split(":")[0]) + 1 + ':00 PM'}</span> 
                 </div>
                 
             </div>

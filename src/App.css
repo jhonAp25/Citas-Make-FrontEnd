@@ -74,6 +74,17 @@ color: #011826;
   background-color: #d43552;
 }
 
+.btn_outline_primary{
+  background-color: #365b732d;
+  color: #365B73;
+  border: 1px solid #365B73;
+  cursor: pointer;
+}
+.btn_outline_primary:hover{
+  background-color: #365B73;
+  color: white;
+}
+
 .btn_secondary{
   background-color: #365B73;
   color: #fff;
@@ -98,6 +109,14 @@ color: #011826;
 .btn_detalle:hover{
   color: #c02c47;
 }
+
+.btn_selected{
+  background-color: #365B73;
+  color: white;
+  border: 2px solid #365B73;
+}
+
+
 /*********************CARD ESTUDIANTE ETIQUETA************************/
 .etiqueta_carrera{
   background-color: #349db554;
@@ -238,10 +257,32 @@ color: #011826;
   background-color: #ffffff;
 
 }
+.content_icon{
+  box-shadow: 0px 5px 6px 0px #8092a3;
+}
+.icon{
+  color:  #365b73;
+}
 
 
-.card_dashboard:hover .text_card{
-  background-color: white;
+
+.card_dashboard:hover{
+  background-color: #365b73;
+}
+.number_card{
+  color: rgba(54, 91, 115, 0.2);
+}
+.card_dashboard:hover .number_card,.content_info.text_normal{
+  color: #e1edf5;
+}
+.card_dashboard:hover .content_info .text_normal{
+  color: #e1edf5;
+}
+.card_dashboard:hover  .content_icon{
+  background-color: #365b73;
+}
+.card_dashboard:hover .content_icon .icon{
+  color: #d8e6f0;
 }
 
 
@@ -336,6 +377,24 @@ color: #011826;
   background-color: #ff4d2938;
   border:1px solid #FF4C29;
   color: #FF4C29;
+  padding: 5%;
+  font-weight: 400;
+  
+}
+
+.etiqueta_estado_asistencia_asistido{
+  background-color: #2a9d9046;
+  border:1px solid #2A9D8F;  
+  color: #2A9D8F;
+  padding: 5%;
+  font-weight: 400;
+  
+}
+
+.etiqueta_estado_asistencia_noasistido{
+  background-color: #f205442c;
+  border:1px solid #F20544;
+  color: #F20544;
   padding: 5%;
   font-weight: 400;
   

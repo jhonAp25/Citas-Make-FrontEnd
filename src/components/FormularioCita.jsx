@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { useEffect } from 'react'
 import { CitaContext } from '../context/CitaContext'
-import { EspecialidadContext } from '../context/EspecialidadContext'
 import { EstudianteContext } from '../context/EstudianteContext'
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -37,6 +36,11 @@ const FormularioCita = () => {
     e.target.reset()
     reset(yupResolver)
     postReservaCita(data)
+    setTimeout(() => {
+      getCitaDisponible(localStorage.getItem("fecha"), localStorage.getItem("especialidad"))
+      getColaEspera()
+    },1000 );
+  
 
 }
 
@@ -77,7 +81,7 @@ const FormularioCita = () => {
               <select className='p-2 mt-1 inputText ' placeholder='00:00' type="text"  {...register("cita", { required: true })}  >
                 <option value="" selected disabled hidden >Selecciones su Horario </option>
                 {citaDisponible.map(c=>(
-                  <option value={c.id} >{c.horaInicio.split(":")[0]+":"+c.horaInicio.split(":")[1]} - {c.horaFin.split(":")[0]+":"+c.horaFin.split(":")[1]}</option>
+                  <option value={c.id} >{c.horaInicio.split(":")[0]+":"+c.horaInicio.split(":")[1]} - {parseInt(c?.horaInicio.split(":")[0]) + 1 + ':00 PM'}</option>
                 ))}
                 
               </select>

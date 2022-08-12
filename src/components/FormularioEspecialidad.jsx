@@ -18,7 +18,7 @@ const FormularioEspecialidad = ({postEspecialidad ,putEspecialidad, data, setDat
         if(descripcion === '' || descripcion === undefined ){
             setError('Ingrese Nombre')
         }else{
-            data?.length != [] ? putEspecialidad(data?.id, descripcion) :  postEspecialidad(descripcion)
+            data?.id != null? putEspecialidad(data?.id, descripcion) :  postEspecialidad(descripcion)
         }
         
         
@@ -40,7 +40,7 @@ const FormularioEspecialidad = ({postEspecialidad ,putEspecialidad, data, setDat
 
         
             <div className='text-center p-3  text-lg font-normal bg_primary '>
-                {data?.length != [] ?
+                {data?.id != null?
                     <p>Actualizar - Especialidad</p>:
                     <p>Nueva - Especialidad</p>
                 }

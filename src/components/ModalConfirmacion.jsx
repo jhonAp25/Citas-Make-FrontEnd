@@ -9,6 +9,7 @@ const ModalConfirmacion = ({ hidden, openModal, idCita }) => {
  
   const registrarReserva=()=>{
     postReservaCita(idCita)
+    
   }
 
   return (

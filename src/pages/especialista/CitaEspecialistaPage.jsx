@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DetalleCitaAgregada from '../../components/DetalleCitaAgregada'
 import FormularioCitaEspecialista from '../../components/FormularioCitaEspecialista'
 
 const CitaEspecialistaPage = () => {
+    const [refresh, setRefresh]=useState(true)
+
   return (
     <div className='flex w-full flex-col  px-20 pt-10  h-full  bg-gray-100' >
 
@@ -12,9 +14,15 @@ const CitaEspecialistaPage = () => {
     
       
 
-        <FormularioCitaEspecialista/>
-
-        <DetalleCitaAgregada/>
+        <FormularioCitaEspecialista setRefresh={setRefresh}  refresh={refresh} />
+        <div>
+          <span className='mb-5 text_normal text-xl font-bold '>
+             Listado de Citas Creadas
+          </span>
+         
+          <DetalleCitaAgregada refresh={refresh}/>
+        </div>
+        
        
     </div>
   

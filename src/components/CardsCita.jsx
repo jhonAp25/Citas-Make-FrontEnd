@@ -14,7 +14,7 @@ const CardsCita = ({especialidad , setIdCita, openModal}) => {
    
   /*****************STATES******************* */
     const [localDate, setLocalDate]=useState(hoy.toLocaleDateString("es-ES", options))
-    const [date, setDate ]=useState(hoy.toISOString().split("T")[0])
+    const [date, setDate ]=useState( hoy.toLocaleDateString('fr-CA'))
     const [especialista, setEspecialista]= useState()
 
     const changeDate=(e)=>{
@@ -37,8 +37,9 @@ const CardsCita = ({especialidad , setIdCita, openModal}) => {
     }
 
     useEffect(() => {
-        
-        localStorage.setItem("fecha" , hoy.toISOString().split("T")[0] )
+        getBusquedaCita(date, especialista)
+       
+        localStorage.setItem("fecha" ,  hoy.toLocaleDateString('fr-CA') )
     }, [])
     
 
