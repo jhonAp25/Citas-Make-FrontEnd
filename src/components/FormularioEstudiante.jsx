@@ -18,8 +18,8 @@ const schema = yup.object().shape({
     fecnac: yup.string().required('Ingrese Fecha de nacimiento'),
     carrera: yup.string("Obligatorio").required('Ingrese el Carrera'),
     correo: yup.string().email('Ingrese correo valido').required('Obligatorio su correo'),
-    dni: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Ingrese DNI valido").max(8,"Maximo 8 caracteres").min(8,"Minimo 8 caracteres").matches(),
-    celular: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Ingrese nro de celular valido").max(9,"Maximo 9 caracteres").min(9,"Minimo 9 caracteres"),
+    dni: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Ingrese DNI valido").max(8,"Maximo 8 caracteres").min(8,"Minimo 8 caracteres").matches().required("Ingrese Dni"),
+    celular: yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Ingrese nro de celular valido").max(9,"Maximo 9 caracteres").min(9,"Minimo 9 caracteres").required("Ingrese Celular"),
 });
 
 
